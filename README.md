@@ -12,3 +12,11 @@ In groups of 4, complete the following tasks, 1 for each team member:
     - Each task must be done by a different team member.
 
 
+
+5.Task for Zhihao zhang: Add **ViewBinding** to the project
+  **Group Members:**
+    Dunxing Yu (021)    
+    Qi Cheng (021) 
+    Chao Wu (021) 
+    Zhihao Zhang (021)
+  **Github Id for Zhihao Zhang:** MetabolismZzz (email for the registration: zhan0825@algonquinlive.com)
