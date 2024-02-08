@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.college.converter.databinding.ActivityMainBinding;
+
 /*
     TODOs:
     In groups of 4, complete the following tasks, 1 for each team member:
@@ -24,8 +26,9 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+    private ActivityMainBinding binding; // Declare a binding variable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    /**protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -34,9 +37,21 @@ public class MainActivity extends AppCompatActivity {
         buttonConvert.setOnClickListener( view ->  {
             convertCurrency(view);
         } );
+    }**/
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        // Inflate the layout using ViewBinding
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot()); // Use the root view of the binding class
+
+        // Set the onClickListener with ViewBinding
+        binding.convertButton.setOnClickListener(view -> {
+            convertCurrency();
+        });
     }
 
-    public void convertCurrency(View view) {
+    public void convertCurrency() {
 
         EditText inputView = findViewById(R.id.entryId);
 
