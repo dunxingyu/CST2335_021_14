@@ -14,6 +14,7 @@ In groups of 4, complete the following tasks, 1 for each team member:
 
 
 5.Task for Zhihao zhang: Add **ViewBinding** to the project
+
   **Group Members:**
     Dunxing Yu (021)    
     Qi Cheng (021) 
