@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
             resultView.setText( resultFloat + " Euros" );
+
         }
+        Log.i(TAG,"Enter convertCurrency()");
+
     }
 }
