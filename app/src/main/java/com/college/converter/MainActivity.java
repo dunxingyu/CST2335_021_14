@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
     static final String TAG = "MainActivity";
 
-
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );
+            //resultView.setText( resultFloat + " Euros" );
+            String resultString = getString(R.string.result_euros, resultFloat);
+            resultView.setText(resultString);
 
         }
         Log.i(TAG,"Enter convertCurrency()");
