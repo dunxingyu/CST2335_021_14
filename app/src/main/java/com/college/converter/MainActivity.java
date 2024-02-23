@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonConvert = findViewById(R.id.convertButton);
-
         buttonConvert.setOnClickListener( view ->  {
             convertCurrency(view);
         } );
