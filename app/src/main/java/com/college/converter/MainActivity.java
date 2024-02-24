@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+    private ActivityMainBinding binding;
     static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         TextView resultView = findViewById(R.id.resultId);
 
         if (!inputAmount.isEmpty()) {
-            Float inputAmountDecimal = Float.valueOf(inputAmount);
-
-
         }
         Log.i(TAG,"Enter convertCurrency()");
 
