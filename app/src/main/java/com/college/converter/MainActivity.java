@@ -25,8 +25,6 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
-    //static final String TAG = "MainActivity";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
         Button buttonConvert = findViewById(R.id.convertButton);
         buttonConvert.setOnClickListener( view ->  {
             convertCurrency(view);
-            //Log.i(TAG,"Enter onCreate()");
         } );
     }
 
@@ -55,7 +52,6 @@ public class MainActivity extends AppCompatActivity {
 
             resultView.setText( resultFloat + " Euros" );**/
         }
-        Log.i(TAG,"Enter convertCurrency()");
 
     }
 }
