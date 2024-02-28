@@ -3,10 +3,18 @@ package com.college.converter;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.college.converter.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     static private final Float CONVERSION_RATE = 0.80F;
+    static final String TAG = "MainActivity";
+
     private ActivityMainBinding binding; // Declare a binding variable
 
     @Override
@@ -20,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the onClickListener with ViewBinding
         binding.convertButton.setOnClickListener(view -> {
             convertCurrency();
+            Log.i(TAG,"Enter onCreate()"); // Logging statement from 'main'
         });
     }
 
@@ -37,5 +46,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Input cannot be empty.", Toast.LENGTH_SHORT).show();
         }
+        Log.i(TAG,"Enter convertCurrency()"); // Ensure logging is present
     }
 }
