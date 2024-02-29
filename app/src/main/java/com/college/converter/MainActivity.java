@@ -65,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
         TextView resultView = findViewById(R.id.resultId);
 
-        if (!inputAmount.isEmpty()) {/**
+        if (!inputAmount.isEmpty()) {
             Float inputAmountDecimal = Float.valueOf(inputAmount);
 
             Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
-            resultView.setText( resultFloat + " Euros" );**/
-
+            //resultView.setText( resultFloat + " Euros" );
+            binding.resultId.setText(resultFloat + " Euros");
         }
         Log.i(TAG,"Enter convertCurrency()");
 
