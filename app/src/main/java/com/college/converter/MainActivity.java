@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convertCurrency() {
+
         String inputAmount = binding.entryId.getText().toString();
 
         if (!inputAmount.isEmpty()) {
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } else {
             Toast.makeText(this, "Input cannot be empty.", Toast.LENGTH_SHORT).show();
+
         }
         Log.i(TAG,"Enter convertCurrency()"); // Ensure logging is present
     }
