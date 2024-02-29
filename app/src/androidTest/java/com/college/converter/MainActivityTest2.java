@@ -28,7 +28,7 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class) // Run with AndroidJUnit4 test runner
-public class MainActivityTest4 {
+public class MainActivityTest2 {
 
     @Rule
     // Rule to launch the activity before each test method
