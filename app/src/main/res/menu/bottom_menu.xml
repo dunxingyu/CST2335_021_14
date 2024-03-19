@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/home_id"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/first_id"
+        android:title="@string/first"
+        />
+
+    <item
+        android:id="@+id/second_id"
+        android:title="@string/second" />
+
+    <item
+        android:id="@+id/third_id"
+        android:title="@string/third" />
+
+    <item
+        android:id="@+id/forth_id"
+        android:title="@string/forth" />
+
+
+</menu>

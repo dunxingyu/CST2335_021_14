@@ -1,12 +1,17 @@
 package com.college.converter;
 
+import static com.college.converter.R.id.bottom_navigation;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /*
     TODOs:
@@ -29,28 +34,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button buttonConvert = findViewById(R.id.convertButton);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        buttonConvert.setOnClickListener( view ->  {
-            convertCurrency(view);
-        } );
-    }
 
-    public void convertCurrency(View view) {
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home_id);
 
-        EditText inputView = findViewById(R.id.entryId);
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(item -> {
 
-        String inputAmount = inputView.getText().toString();
-
-        TextView resultView = findViewById(R.id.resultId);
-
-        if (!inputAmount.isEmpty()) {
-            Float inputAmountDecimal = Float.valueOf(inputAmount);
-
-            Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
-
-            String resultString = getString(R.string.result_euros, resultFloat);
-            resultView.setText(resultString);
-        }
+            int item_id = item.getItemId();
+            if (item_id == R.id.home_id) {
+                return true;
+            }
+            else if (item_id == R.id.first_id) {
+                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                return true;
+            }
+            else if (item_id == R.id.second_id) {
+                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                return true;
+            }
+            else if (item_id == R.id.third_id) {
+                startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
+                return true;
+            }
+            else if (item_id == R.id.forth_id) {
+                startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                return true;
+            }
+            return false;
+        });
     }
 }

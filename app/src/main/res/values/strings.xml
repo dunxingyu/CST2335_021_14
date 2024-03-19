@@ -1,7 +1,8 @@
 <resources>
-    <string name="app_name">Currency Converter</string>
-    <string name="result_euros">%1$.2f Euros</string>
-    <string name="enter_dollars">Enter Dollars</string>
-    <string name="result">Result</string>
-    <string name="convertButton">Convert</string>
+    <string name="app_name">Final Project</string>
+    <string name="first">Sunrise/Sunset</string>
+    <string name="second">Recipe</string>
+    <string name="third">Dictionary</string>
+    <string name="forth">Deezer Song</string>
+    <string name="home">Home</string>
 </resources>
