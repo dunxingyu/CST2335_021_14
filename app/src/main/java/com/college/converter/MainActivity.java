@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 /*
-    TODOs:
+    TODOs:::
     In groups of 4, complete the following tasks, 1 for each team member:
     1. Extract all the strings into the strings.xml file and use them in the layout and the activity
     2. Change the theme of the app to a NoActionBar theme and modify the primary colors
