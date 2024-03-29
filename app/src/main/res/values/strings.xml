@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Currency Converter</string>
+
+    <string name="app_name">Final Project</string>
+
     <string name="result_euros" translatable="false">%1$.2f Euros</string>
     <string name="enter_dollars" translatable="false">Enter Dollars</string>
     <string name="result" translatable="false">Result</string>
@@ -42,12 +44,33 @@
     <string name="searchRecord" translatable="false">searchRecord</string>
     <string name="latSearch" translatable="false">latSearch</string>
     lngSearch<string name="lngSearch" translatable="false">lngSearch</string>
+  
     <string name="Sunlookup">Sun-Lookup</string>
     <string name="first">Sunrise/Sunset</string>
     <string name="second">Recipe</string>
     <string name="third">Dictionary</string>
     <string name="forth">Deezer Song</string>
     <string name="home">Home</string>
-
+    <string name="help">Help</string>
+    <string name="word">Word</string>
+    <string name="hint">Enter a word</string>
+    <string name="definition">Definition</string>
+    <string name="search">Look up</string>
+    <string name="save">Save</string>
+    <string name="read">View</string>
+    <string name="history">Search History</string>
+    <string name="dic_database_name" translatable="false">database-dictionary</string>
+    <string name="record_goes_here">Record goes here</string>
+    <string name="dic_sharedPreferences_name" translatable="false">MyDictionary</string>
+    <string name="question">Question: </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="undo">Undo</string>
+    <string name="deleted_message">You deleted record #</string>
+    <string name="want_to_delete">Do you want to delete this term: </string>
+    <string name="dictionary_information">The APP support user to look up the definitions of word which is entered by the user. User can click save button to save the search term and definitions in the database and click view button to see the history of the search term and definitions.</string>
+    <string name="dictionary_info_title">Dictionary API instructions</string>
+    <string name="back">Back Home</string>
+    <string name="error_msg">Please enter a valid word</string>
 
 </resources>
