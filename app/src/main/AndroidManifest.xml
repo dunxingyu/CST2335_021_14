@@ -15,6 +15,7 @@
         android:theme="@style/Theme.NoToolbar"
         tools:targetApi="31">
         <activity
+
             android:name=".FirstActivity"
             android:exported="true" />
         <activity
@@ -26,6 +27,16 @@
         <activity
             android:name=".ForthActivity"
             android:exported="true" />
+
+            android:name="chaowu.DetailSong"
+            android:exported="false" />
+        <activity
+            android:name="chaowu.ActivityFavorite"
+            android:exported="false" />
+       // <activity
+       //     android:name="chaowu.DeezerActivity"
+       //     android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
