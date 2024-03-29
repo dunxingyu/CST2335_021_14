@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">最终项目</string>
+    <string name="first">日出/日落</string>
+    <string name="second">食谱</string>
+    <string name="third">词典</string>
+    <string name="forth">Deezer曲库</string>
+    <string name="home">主页</string>
+    <string name="help">帮助</string>
+    <string name="word">单词</string>
+    <string name="hint">输入单词</string>
+    <string name="definition">定义</string>
+    <string name="search">查找</string>
+    <string name="save">保存</string>
+    <string name="read">查看</string>
+    <string name="history">查询历史</string>
+    <string name="record_goes_here">记录在这显示</string>
+    <string name="question">问题：</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="error_msg">请输入有效单词</string>
+    <string name="undo">撤销</string>
+    <string name="deleted_message">你删除的记录#</string>
+    <string name="want_to_delete">请问你想要删除该单词：</string>
+    <string name="dictionary_information">此APP支持用户查找用户输入的单词的定义。用户可以单击保存按钮将搜索词和定义保存到数据库中，单击查看按钮查看搜索词和定义的历史记录。</string>
+    <string name="dictionary_info_title">词典API指引</string>
+    <string name="back">返回主页</string>
+</resources>
