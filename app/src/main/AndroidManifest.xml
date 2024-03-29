@@ -16,29 +16,30 @@
         tools:targetApi="31">
         <activity
 
-            android:name=".FirstActivity"
+            android:name="com.college.converter.FirstActivity"
             android:exported="true" />
         <activity
-            android:name=".SecondActivity"
+            android:name="com.college.converter.SecondActivity"
             android:exported="true" />
         <activity
-            android:name=".Dictionary"
+            android:name="com.college.converter.Dictionary"
             android:exported="true" />
         <activity
-            android:name=".ForthActivity"
+            android:name="com.college.converter.ForthActivity"
             android:exported="true" />
 
+        <activity
             android:name="chaowu.DetailSong"
             android:exported="false" />
         <activity
             android:name="chaowu.ActivityFavorite"
             android:exported="false" />
-       // <activity
-       //     android:name="chaowu.DeezerActivity"
-       //     android:exported="false" />
+       <activity
+            android:name="chaowu.DeezerActivity"
+            android:exported="false" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.college.converter.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

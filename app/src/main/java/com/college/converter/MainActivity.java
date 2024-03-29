@@ -55,21 +55,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the onClickListener with ViewBinding
-        binding.convertButton.setOnClickListener(view -> {
+        //binding.convertButton.setOnClickListener(view -> {
             //convertCurrency();
-            Intent nextPage = new Intent(MainActivity.this, DeezerActivity.class);
-            startActivity(nextPage);
-        });
+        //    Intent nextPage = new Intent(MainActivity.this, DeezerActivity.class);
+         //   startActivity(nextPage);
+       // });
 
-    }
-
-
-
+    //}
 
         // Set Home selected
         bottomNavigationView.setSelectedItemId(R.id.home_id);
@@ -94,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             else if (item_id == R.id.forth_id) {
-                startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                 return true;
             }
             return false;
