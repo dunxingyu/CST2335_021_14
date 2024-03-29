@@ -1,15 +1,9 @@
 package com.college.converter;
 
-import static com.college.converter.R.id.bottom_navigation;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -56,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             else if (item_id == R.id.third_id) {
-                startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
+                startActivity(new Intent(getApplicationContext(), Dictionary.class));
                 return true;
             }
             else if (item_id == R.id.forth_id) {

@@ -5,24 +5,27 @@
 
     <item
         android:id="@+id/home_id"
-        android:title="@string/home" />
+        android:title="@string/home"
+        android:icon="@drawable/homeicon"/>
 
     <item
         android:id="@+id/first_id"
         android:title="@string/first"
-        />
+        android:icon="@drawable/icon_sunrise"/>
 
     <item
         android:id="@+id/second_id"
-        android:title="@string/second" />
+        android:title="@string/second"
+        android:icon="@drawable/icon_recipe"/>
 
     <item
         android:id="@+id/third_id"
-        android:title="@string/third" />
+        android:title="@string/third"
+        android:icon="@drawable/icon_dictionary"/>
 
     <item
         android:id="@+id/forth_id"
-        android:title="@string/forth" />
-
-
+        android:title="@string/forth"
+        android:icon="@drawable/icon_music_album"/>
+    
 </menu>

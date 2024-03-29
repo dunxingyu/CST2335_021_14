@@ -25,12 +25,16 @@ public class ForthActivity extends AppCompatActivity {
             if ( item_id == R.id.home_id ) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
+            else if (item_id == R.id.first_id) {
+                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                return true;
+            }
             else if ( item_id == R.id.second_id ) {
                 startActivity(new Intent(getApplicationContext(), SecondActivity.class));
                 return true;
             }
             else if ( item_id == R.id.third_id ) {
-                startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
+                startActivity(new Intent(getApplicationContext(), Dictionary.class));
                 return true;
             }
             else if ( item_id == R.id.forth_id ) {
