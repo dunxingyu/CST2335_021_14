@@ -1,5 +1,51 @@
 <resources>
+
     <string name="app_name">Final Project</string>
+
+    <string name="result_euros" translatable="false">%1$.2f Euros</string>
+    <string name="enter_dollars" translatable="false">Enter Dollars</string>
+    <string name="result" translatable="false">Result</string>
+    <string name="convertButton" translatable="false">Convert</string>
+    <string name="receive_image" translatable="false">Receive Image</string>
+    <string name="time_goes_here" translatable="false">Time goes here</string>
+    <string name="message_goes_here" translatable="false">Message goes here</string>
+    <string name="send_image" translatable="false">Send Image</string>
+    <string name="receive" translatable="false">RECEIVE</string>
+    <string name="sent" translatable="false">SENT</string>
+    <string name="delete_message" >Do you want to delete this favourite or lookup?</string>
+    <string name="no">NO</string>
+    <string name="enter_message">Enter message</string>
+    <string name="undo" >undo</string>
+    <string name="deleted_message">you deleted message #</string>
+    <string name="title_activity_main2" translatable="false">MainActivity2</string>
+    <string name="title_home">Home</string>
+    <string name="title_notifications" translatable="false">Notifications</string>
+    <string name="want_to_delete" >Do you want delet this recrord?</string>
+    <string name="lookup" >Lookup</string>
+    <string name="sunlookup_information">The APP looks up sunrise and sunset times based on the latitude and longitude entered by the user.</string>
+    <string name="sunlookup_information1">The lat range is -90.00 to 90.00 and longitude range is -180.00 to 180.00.</string>
+    <string name="sunlookup_information2">If it is greater than or less than the range, the APP will convert it to the correct number.</string>
+    <string name="sunlookup_information3">Negative numbers represent south lat and west longitudes.</string>
+    <string name="sl_ifo_titlr">Sun Lookup</string>
+    <string name="back" >Back</string>
+    <string name="sundb" translatable="false">sundb</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="question">Question</string>
+    <string name="delete">Delete</string>
+    <string name="sunrise">Sunrise:</string>
+    <string name="sunset">Sunset:</string>
+    <string name="enterNumber">Enter number</string>
+    <string name="lat">Lat:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="save">Save</string>
+    <string name="view">View</string>
+    <string name="favourate">Favourite</string>
+    <string name="latlgt">Lat---------Lng</string>
+    <string name="searchRecord" translatable="false">searchRecord</string>
+    <string name="latSearch" translatable="false">latSearch</string>
+    lngSearch<string name="lngSearch" translatable="false">lngSearch</string>
+  
+    <string name="Sunlookup">Sun-Lookup</string>
     <string name="first">Sunrise/Sunset</string>
     <string name="second">Recipe</string>
     <string name="third">Dictionary</string>
@@ -26,4 +72,5 @@
     <string name="dictionary_info_title">Dictionary API instructions</string>
     <string name="back">Back Home</string>
     <string name="error_msg">Please enter a valid word</string>
+
 </resources>
