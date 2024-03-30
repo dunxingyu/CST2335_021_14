@@ -12,19 +12,34 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Converter"
+        android:theme="@style/Theme.NoToolbar"
         tools:targetApi="31">
+        <activity
+
+            android:name="com.college.converter.FirstActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.college.converter.SecondActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.college.converter.Dictionary"
+            android:exported="true" />
+        <activity
+            android:name="com.college.converter.ForthActivity"
+            android:exported="true" />
+
         <activity
             android:name="chaowu.DetailSong"
             android:exported="false" />
         <activity
             android:name="chaowu.ActivityFavorite"
             android:exported="false" />
-        <activity
+       <activity
             android:name="chaowu.DeezerActivity"
             android:exported="false" />
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.college.converter.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

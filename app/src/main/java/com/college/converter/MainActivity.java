@@ -2,11 +2,19 @@ package com.college.converter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
+// import android.content.Intent;
+// import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
+
 
 import com.college.converter.databinding.ActivityMainBinding;
 
@@ -47,36 +55,65 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Inflate the layout using ViewBinding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot()); // Use the root view of the binding class
+        setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // Set the onClickListener with ViewBinding
-        binding.convertButton.setOnClickListener(view -> {
+        //binding.convertButton.setOnClickListener(view -> {
             //convertCurrency();
-            Intent nextPage = new Intent(MainActivity.this, DeezerActivity.class);
-            startActivity(nextPage);
+        //    Intent nextPage = new Intent(MainActivity.this, DeezerActivity.class);
+         //   startActivity(nextPage);
+       // });
+
+    //}
+
+        // Set Home selected
+        bottomNavigationView.setSelectedItemId(R.id.home_id);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            int item_id = item.getItemId();
+            if (item_id == R.id.home_id) {
+                return true;
+            }
+            else if (item_id == R.id.first_id) {
+                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                return true;
+            }
+            else if (item_id == R.id.second_id) {
+                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                return true;
+            }
+            else if (item_id == R.id.third_id) {
+                startActivity(new Intent(getApplicationContext(), Dictionary.class));
+                return true;
+            }
+            else if (item_id == R.id.forth_id) {
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
+                return true;
+            }
+            return false;
         });
 
-    }
 
-    public void convertCurrency() {
+//        EditText inputView = findViewById(R.id.entryId);
 
-        EditText inputView = findViewById(R.id.entryId);
+//        String inputAmount = inputView.getText().toString();
 
-        String inputAmount = inputView.getText().toString();
+//        TextView resultView = findViewById(R.id.resultId);
 
-        TextView resultView = findViewById(R.id.resultId);
+//        if (!inputAmount.isEmpty()) {
+//            Float inputAmountDecimal = Float.valueOf(inputAmount);
 
-        if (!inputAmount.isEmpty()) {
-            Float inputAmountDecimal = Float.valueOf(inputAmount);
-
-            Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
+//            Float resultFloat = inputAmountDecimal * CONVERSION_RATE;
 
             //resultView.setText( resultFloat + " Euros" );
-            binding.resultId.setText(resultFloat + " Euros");
-        }
-        Log.i(TAG,"Enter convertCurrency()");
+//            binding.resultId.setText(resultFloat + " Euros");
+//        }
+//        Log.i(TAG,"Enter convertCurrency()");
+
 
     }
 }
