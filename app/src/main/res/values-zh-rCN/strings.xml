@@ -42,9 +42,15 @@
     <string name="lookup">查询</string>
     <string name="view">查看收藏</string>
     <string name="delete">删除</string>
+    <string name="Welcome">欢迎</string>
+    <string name="sun">日出日落查询</string>
+    <string name="RecipeSearch">菜谱查询</string>
+    <string name="da">字典</string>
+    <string name="dssa">打击乐查询</string>
+    <string name="thank">谢谢使用！</string>
 
-<!--
+    <!--
 
--->
+    -->
 
 </resources>

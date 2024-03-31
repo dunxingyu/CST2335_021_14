@@ -228,7 +228,7 @@ public class Sunlookup extends AppCompatActivity {
             itemView.setOnLongClickListener(v -> {
                 int position = getAbsoluteAdapterPosition();
                 AlertDialog.Builder builder = new AlertDialog.Builder( Sunlookup.this );
-                builder.setMessage(getString(R.string.delete_message));
+                builder.setMessage(getString(R.string.want_to_delete));
                 builder.setTitle(getString(R.string.question));
                 builder.setPositiveButton(getString(R.string.no),(dialog,cl)->{});
                 builder.setNegativeButton(getString(R.string.delete),(dialog,cl)->{
