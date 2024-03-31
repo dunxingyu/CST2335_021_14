@@ -8,6 +8,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -36,11 +37,21 @@ import org.junit.runner.RunWith;
 public class SunlookupTest {
 
     @Rule
-    public ActivityScenarioRule<Sunlookup> mActivityScenarioRule =
-            new ActivityScenarioRule<>(Sunlookup.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
     public void sunlookupTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.first_id), withContentDescription("Sunrise/Sunset"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editText_lat), withText("0"),
                         childAtPosition(
@@ -97,11 +108,11 @@ public class SunlookupTest {
         materialButton.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView_rise), withText("Sunrise:6:54:29 AM"),
+                allOf(withId(R.id.textView_rise), withText("Sunrise:6:50:44 AM"),
                         withParent(allOf(withId(R.id.linear_layout),
                                 withParent(IsInstanceOf.<View>instanceOf(android.view.ViewGroup.class)))),
                         isDisplayed()));
-        textView.check(matches(withText("Sunrise:6:54:29 AM")));
+        textView.check(matches(withText("Sunrise:6:50:44 AM")));
     }
 
     private static Matcher<View> childAtPosition(

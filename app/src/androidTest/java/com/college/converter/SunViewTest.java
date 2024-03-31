@@ -4,13 +4,11 @@ package com.college.converter;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
-import static androidx.test.espresso.assertion.ViewAssertions.doesNotExist;
-import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -35,14 +33,24 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class SunlookupDeleteTest {
+public class SunViewTest {
 
     @Rule
-    public ActivityScenarioRule<Sunlookup> mActivityScenarioRule =
-            new ActivityScenarioRule<>(Sunlookup.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void sunlookupDeleteTest() {
+    public void sunViewTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.first_id), withContentDescription("Sunrise/Sunset"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.editText_lat), withText("0"),
                         childAtPosition(
@@ -52,10 +60,10 @@ public class SunlookupDeleteTest {
                                                 0)),
                                 3),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("45"));
+        appCompatEditText.perform(replaceText("25"));
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editText_lat), withText("45"),
+                allOf(withId(R.id.editText_lat), withText("25"),
                         childAtPosition(
                                 allOf(withId(R.id.linear_layout),
                                         childAtPosition(
@@ -74,10 +82,10 @@ public class SunlookupDeleteTest {
                                                 0)),
                                 5),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("78"));
+        appCompatEditText3.perform(replaceText("85"));
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editText_longitut), withText("78"),
+                allOf(withId(R.id.editText_longitut), withText("85"),
                         childAtPosition(
                                 allOf(withId(R.id.linear_layout),
                                         childAtPosition(
@@ -109,83 +117,12 @@ public class SunlookupDeleteTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
-        ViewInteraction appCompatEditText5 = onView(
-                allOf(withId(R.id.editText_lat), withText("45"),
-                        childAtPosition(
-                                allOf(withId(R.id.linear_layout),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                0)),
-                                3),
-                        isDisplayed()));
-        appCompatEditText5.perform(replaceText("35"));
-
-        ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.editText_lat), withText("35"),
-                        childAtPosition(
-                                allOf(withId(R.id.linear_layout),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                0)),
-                                3),
-                        isDisplayed()));
-        appCompatEditText6.perform(closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.editText_longitut), withText("78"),
-                        childAtPosition(
-                                allOf(withId(R.id.linear_layout),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                0)),
-                                5),
-                        isDisplayed()));
-        appCompatEditText7.perform(replaceText("124"));
-
-        ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.editText_longitut), withText("124"),
-                        childAtPosition(
-                                allOf(withId(R.id.linear_layout),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                0)),
-                                5),
-                        isDisplayed()));
-        appCompatEditText8.perform(closeSoftKeyboard());
-
-        ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.button_save), withText("Save"),
-                        childAtPosition(
-                                allOf(withId(R.id.linear_layout),
-                                        childAtPosition(
-                                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                                0)),
-                                7),
-                        isDisplayed()));
-        materialButton3.perform(click());
-
-        ViewInteraction recyclerView = onView(
-                allOf(withId(R.id.recyclerView),
-                        childAtPosition(
-                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                                3)));
-        recyclerView.perform(actionOnItemAtPosition(0, longClick()));
-
-        ViewInteraction materialButton4 = onView(
-                allOf(withId(android.R.id.button2), withText("Delete"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(androidx.appcompat.R.id.buttonPanel),
-                                        0),
-                                2)));
-        materialButton4.perform(scrollTo(), click());
-
         ViewInteraction textView = onView(
-                allOf(withId(R.id.lat), withText("35"),
+                allOf(withId(R.id.lat), withText("25"),
                         withParent(allOf(withId(R.id.items),
                                 withParent(withId(R.id.recyclerView)))),
                         isDisplayed()));
-        textView.check(doesNotExist());
+        textView.check(matches(withText("25")));
     }
 
     private static Matcher<View> childAtPosition(

@@ -29,14 +29,24 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class SunlookupHelpTest {
+public class SunHelpTest {
 
     @Rule
-    public ActivityScenarioRule<Sunlookup> mActivityScenarioRule =
-            new ActivityScenarioRule<>(Sunlookup.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void sunlookupHelpTest() {
+    public void sunHelpTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.first_id), withContentDescription("Sunrise/Sunset"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
         ViewInteraction actionMenuItemView = onView(
                 allOf(withId(R.id.help), withContentDescription("Help"),
                         childAtPosition(
@@ -48,11 +58,11 @@ public class SunlookupHelpTest {
         actionMenuItemView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(androidx.appcompat.R.id.alertTitle), withText("Sun Lookup"),
+                allOf(withId(androidx.appcompat.R.id.alertTitle), withText("Dictionary API instructions"),
                         withParent(allOf(withId(androidx.appcompat.R.id.title_template),
                                 withParent(withId(androidx.appcompat.R.id.topPanel)))),
                         isDisplayed()));
-        textView.check(matches(withText("Sun Lookup")));
+        textView.check(matches(withText("Dictionary API instructions")));
     }
 
     private static Matcher<View> childAtPosition(

@@ -147,7 +147,7 @@ public class DeezerActivity extends AppCompatActivity {
             }
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.third_id);
+        bottomNavigationView.setSelectedItemId(R.id.forth_id);
 
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {

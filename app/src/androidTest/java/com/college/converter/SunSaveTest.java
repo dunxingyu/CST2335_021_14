@@ -8,6 +8,7 @@ import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -32,14 +33,24 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class SunlookupSaveTest {
+public class SunSaveTest {
 
     @Rule
-    public ActivityScenarioRule<Sunlookup> mActivityScenarioRule =
-            new ActivityScenarioRule<>(Sunlookup.class);
+    public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
+            new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void sunlookupSaveTest() {
+    public void sunSaveTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.first_id), withContentDescription("Sunrise/Sunset"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
+
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.button_read), withText("View"),
                         childAtPosition(
@@ -60,10 +71,10 @@ public class SunlookupSaveTest {
                                                 0)),
                                 3),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("25"));
+        appCompatEditText.perform(replaceText("45"));
 
         ViewInteraction appCompatEditText2 = onView(
-                allOf(withId(R.id.editText_lat), withText("25"),
+                allOf(withId(R.id.editText_lat), withText("45"),
                         childAtPosition(
                                 allOf(withId(R.id.linear_layout),
                                         childAtPosition(
@@ -82,10 +93,10 @@ public class SunlookupSaveTest {
                                                 0)),
                                 5),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("85"));
+        appCompatEditText3.perform(replaceText("76"));
 
         ViewInteraction appCompatEditText4 = onView(
-                allOf(withId(R.id.editText_longitut), withText("85"),
+                allOf(withId(R.id.editText_longitut), withText("76"),
                         childAtPosition(
                                 allOf(withId(R.id.linear_layout),
                                         childAtPosition(
@@ -107,11 +118,11 @@ public class SunlookupSaveTest {
         materialButton2.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.lng), withText("85"),
+                allOf(withId(R.id.lat), withText("45"),
                         withParent(allOf(withId(R.id.items),
                                 withParent(withId(R.id.recyclerView)))),
                         isDisplayed()));
-        textView.check(matches(withText("85")));
+        textView.check(matches(withText("45")));
     }
 
     private static Matcher<View> childAtPosition(
