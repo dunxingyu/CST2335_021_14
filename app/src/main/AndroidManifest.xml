@@ -43,6 +43,15 @@
        <activity
             android:name="chaowu.DeezerActivity"
             android:exported="false" />
+        <activity
+            android:name="Zhihao.FavoriteActivity"
+            android:exported="false" />
+        <activity
+            android:name="Zhihao.RecipeDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name="Zhihao.RecipeSearchActivity"
+            android:exported="false" />
 
         <activity
             android:name="com.college.converter.MainActivity"

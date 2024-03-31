@@ -66,8 +66,16 @@
     <string name="back">Back Home</string>
     <string name="error_msg">Please enter a valid word</string>
 
-
-
+    <!--Recipe Search value strings-->
+    <string name="app_name">Recipe Finder</string>
+    <string name="search_hint">Enter a recipe name...</string>
+    <string name="search_button">Search</string>
+    <string name="enter_search_term">Please enter a search term.</string>
+    <string name="error_fetch_data">Error fetching data. Please try again later.</string>
+    <string name="error_occurred">An error occurred. Please try again.</string>
+    <string name="recipe_deleted">Recipe "%1$s" deleted</string>
+    <string name="undo">Undo</string>
+    <string name="help_info">Help information not available.</string>
 
 
 
