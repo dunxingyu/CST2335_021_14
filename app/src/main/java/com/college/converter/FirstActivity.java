@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import chaowu.DeezerActivity;
+
 public class FirstActivity extends AppCompatActivity {
 
     @Override
@@ -37,7 +39,7 @@ public class FirstActivity extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.forth_id ) {
-                startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                 return true;
             }
             return false;

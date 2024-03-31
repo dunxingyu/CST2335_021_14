@@ -12,28 +12,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.college.converter.R.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.college.converter.R.layout;
+import com.college.converter.R.string;
 import com.college.converter.data.DictionaryDAO;
 import com.college.converter.data.DictionaryDatabase;
 import com.college.converter.data.DictionaryRecord;
 import com.college.converter.databinding.ActivityDictionaryBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import com.android.volley.*;
-import org.json.JSONArray;
-import org.json.JSONObject;
+
+import chaowu.DeezerActivity;
 
 /**
  * This application has an EditText for entering a word to look up the definition via internet.
@@ -208,7 +216,7 @@ public class Dictionary extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             else if (item_id == R.id.first_id) {
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                 return true;
             }
             else if ( item_id == R.id.second_id ) {
@@ -219,7 +227,7 @@ public class Dictionary extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.forth_id ) {
-                startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                 return true;
             }
             return false;

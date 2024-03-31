@@ -26,7 +26,7 @@ public class ForthActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             else if (item_id == R.id.first_id) {
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                 return true;
             }
             else if ( item_id == R.id.second_id ) {

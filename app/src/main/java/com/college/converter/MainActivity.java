@@ -1,22 +1,12 @@
 package com.college.converter;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-
-// import android.content.Intent;
-// import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.TextView;
-
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.college.converter.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import chaowu.DeezerActivity;
 
@@ -79,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             else if (item_id == R.id.first_id) {
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                 return true;
             }
             else if (item_id == R.id.second_id) {

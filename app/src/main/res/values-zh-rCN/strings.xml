@@ -26,34 +26,25 @@
     <string name="dictionary_info_title">词典API指引</string>
     <string name="back">返回主页</string>
 
-<!--
-    <string name="app_name">Currency Converter</string>
-    <string name="delete_message">你想删除还是查询此记录吗？</string>
-    <string name="question">询问</string>
-    <string name="delete">删除</string>
-    <string name="no">不是</string>
-    <string name="enter_message">输入信息</string>
-    <string name="undo">撤回</string>
-    <string name="deleted_message">你删除的记录是：</string>
-    <string name="title_home">返回</string>
-    <string name="want_to_delete">你想删除还是查询此记录吗？</string>
-    <string name="lookup">查询</string>
     <string name="sunlookup_information">这个软件是根据输入的经纬度查询太阳的升起和降落时间。</string>
     <string name="sunlookup_information1">纬度范围是-90.00到90.00.经度范围是-180.00到180.00</string>
     <string name="sunlookup_information2">如果大于或小于范围，APP 会转换为正确的数字。</string>
     <string name="sunlookup_information3">负数代表南纬和西经。</string>
     <string name="sl_ifo_titlr">日出日落查询</string>
-    <string name="back">返回</string>
     <string name="sunrise">日出：</string>
     <string name="sunset">日落：</string>
     <string name="enterNumber">输入数字</string>
     <string name="lat">纬度</string>
     <string name="longitude">经度</string>
-    <string name="save">保存</string>
-    <string name="view">查看收藏</string>
     <string name="favourate">收藏</string>
-    <string name="latlgt">纬度经度</string>
+    <string name="latlgt">纬度-----经度</string>
     <string name="Sunlookup">日出日落查询</string>
+    <string name="lookup">查询</string>
+    <string name="view">查看收藏</string>
+    <string name="delete">删除</string>
+
+<!--
+
 -->
 
 </resources>

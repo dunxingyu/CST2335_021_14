@@ -46,6 +46,8 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import chaowu.DeezerActivity;
+
 
 /**This APP search the sunrise and sunset time base on user enter the lat and longitude.
  * @author Dunxing Yu
@@ -112,6 +114,36 @@ public class Sunlookup extends AppCompatActivity {
         toolbar.setTitle(getString(R.string.Sunlookup)); // set the Name
         setSupportActionBar(toolbar);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.first_id);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(item ->
+                {
+                    int item_id = item.getItemId();
+                    if ( item_id == R.id.home_id ) {
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                    }
+                    else if ( item_id == R.id.first_id ) {
+                        return true;
+                    }
+                    else if ( item_id == R.id.second_id ) {
+                        startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                        return true;
+                    }
+                    else if ( item_id == R.id.third_id ) {
+                        startActivity(new Intent(getApplicationContext(), Dictionary.class));
+                        return true;
+                    }
+                    else if ( item_id == R.id.forth_id ) {
+                        startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
+                        return true;
+                    }
+                    return false;
+                }
+        );
+
         binding.buttonSave.setOnClickListener(click ->{
             SunlookupData data = new SunlookupData(binding.editTextLat.getText().toString(),
                     binding.editTextLongitut.getText().toString(),true);
@@ -151,31 +183,24 @@ public class Sunlookup extends AppCompatActivity {
      * @return true
      */
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
     @Override
-    /**Menu operations
-     * @param item user choose item
-     * @return true
-     */
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId();
-        switch (itemId){
-            case R.id.help:
-                AlertDialog.Builder builder = new AlertDialog.Builder( Sunlookup.this );
-                builder.setMessage(getString(R.string.sunlookup_information)+getString(R.string.sunlookup_information1)
-                +getString(R.string.sunlookup_information2)+getString(R.string.sunlookup_information3));
-                builder.setTitle(getString(R.string.sl_ifo_titlr));
-                builder.setPositiveButton(getString(R.string.back),(dialog,cl)->{});
-                builder.create().show();
-               Toast.makeText(this, "CLICK HELP", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.home:
-                Toast.makeText(this, "CLICK HOME", Toast.LENGTH_SHORT).show();
-                finish();
-                return true;
 
+        int id = item.getItemId();
+        if ( id ==  R.id.help) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(Sunlookup.this);
+            builder1.setMessage(getString(R.string.dictionary_information));
+            builder1.setTitle(getString(R.string.dictionary_info_title));
+
+            builder1.create().show();
+        }
+        else if (id ==  R.id.home) {
+            Toast.makeText(this, getString(R.string.back), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }
@@ -261,35 +286,7 @@ public class Sunlookup extends AppCompatActivity {
           Log.e("ex", "Error encoding city name");
        }
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setSelectedItemId(R.id.first_id);
-
-        // Perform item selected listener
-        bottomNavigationView.setOnItemSelectedListener(item ->
-                {
-                    int item_id = item.getItemId();
-                    if ( item_id == R.id.home_id ) {
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                    }
-                    else if ( item_id == R.id.first_id ) {
-                        return true;
-                    }
-                    else if ( item_id == R.id.second_id ) {
-                        //startActivity(new Intent(getApplicationContext(), SecondActivity.class));
-                        return true;
-                    }
-                    else if ( item_id == R.id.third_id ) {
-                        //startActivity(new Intent(getApplicationContext(), ThirdActivity.class));
-                        return true;
-                    }
-                    else if ( item_id == R.id.forth_id ) {
-                        //startActivity(new Intent(getApplicationContext(), ForthActivity.class));
-                        return true;
-                    }
-                    return false;
-                }
-        );
     }
 
 }

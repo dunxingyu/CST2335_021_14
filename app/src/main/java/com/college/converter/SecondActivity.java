@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import chaowu.DeezerActivity;
+
 public class SecondActivity extends AppCompatActivity {
 
     @Override
@@ -26,7 +28,7 @@ public class SecondActivity extends AppCompatActivity {
                     startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 }
                 else if (item_id == R.id.first_id) {
-                    startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                    startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                     return true;
                 }
                 else if ( item_id == R.id.second_id ) {
@@ -37,7 +39,7 @@ public class SecondActivity extends AppCompatActivity {
                     return true;
                 }
                 else if ( item_id == R.id.forth_id ) {
-                    startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                    startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                     return true;
                 }
                 return false;
