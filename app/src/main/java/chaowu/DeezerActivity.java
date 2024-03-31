@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,10 +29,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.college.converter.Dictionary;
+import com.college.converter.FirstActivity;
+import com.college.converter.ForthActivity;
 import com.college.converter.MainActivity;
 import com.college.converter.R;
+import com.college.converter.SecondActivity;
 import com.college.converter.databinding.ActivityDeezerBinding;
 import com.college.converter.databinding.ViewRowBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -63,8 +70,12 @@ public class DeezerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityDeezerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setSupportActionBar(binding.toolbar);
+        //setContentView(R.layout.activity_deezer);
+
 
 
         if (binding.editTextText != null) {
@@ -141,6 +152,34 @@ public class DeezerActivity extends AppCompatActivity {
                 return songs.size();
             }
         });
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.third_id);
+
+        // Perform item selected listener
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            int item_id = item.getItemId();
+            if ( item_id == R.id.home_id ) {
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+            else if (item_id == R.id.first_id) {
+                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                return true;
+            }
+            else if ( item_id == R.id.second_id ) {
+                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                return true;
+            }
+            else if ( item_id == R.id.third_id ) {
+                startActivity(new Intent(getApplicationContext(), Dictionary.class));
+
+                return true;
+            }
+            else if ( item_id == R.id.forth_id ) {
+                return true;
+            }
+            return false;
+        });
     }
     class MyRowHolder extends RecyclerView.ViewHolder{
         TextView rowitem;
@@ -171,6 +210,28 @@ public class DeezerActivity extends AppCompatActivity {
         }
     }
 
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.my_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        int id = item.getItemId();
+        if ( id ==  R.id.help) {
+            androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(DeezerActivity.this);
+            builder1.setMessage(getString(R.string.dictionary_information));
+            builder1.setTitle(getString(R.string.dictionary_info_title));
+
+            builder1.create().show();
+        }
+        else if (id ==  R.id.home) {
+            Toast.makeText(this, getString(R.string.back), Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void fetchSong(String key){
         songtest = new ArrayList<>();
         songs = new ArrayList<>();
@@ -258,6 +319,7 @@ public class DeezerActivity extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(tracklistRequest);
     }
+
 
 
 }
