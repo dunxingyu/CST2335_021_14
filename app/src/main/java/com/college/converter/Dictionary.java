@@ -117,6 +117,7 @@ public class Dictionary extends AppCompatActivity {
                 .build();
         dictionaryDAO = db.dicDAO();
 
+        binding.toolbar.setTitle(getString(string.third));
         setSupportActionBar(binding.toolbar);
 
         queue= Volley.newRequestQueue(this);

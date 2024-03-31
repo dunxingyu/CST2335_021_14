@@ -40,7 +40,10 @@ public class MainToDictionaryActivityTest {
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
-
+    /**
+     * This function test the app launches from MainActivity, if user click the Dictionary button from
+     * the bottom navigation, the app will goes to DictionaryActivity.
+     */
     @Test
     public void mainToDictionaryActivityTest() {
 
