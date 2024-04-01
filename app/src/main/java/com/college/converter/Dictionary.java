@@ -156,9 +156,9 @@ public class Dictionary extends AppCompatActivity {
             @Override
             public MyRowHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-                    LayoutInflater newRow = LayoutInflater.from(parent.getContext());
-                    View thisRow = newRow.inflate(R.layout.word,parent,false);
-                    return new MyRowHolder(thisRow);
+                LayoutInflater newRow = LayoutInflater.from(parent.getContext());
+                View thisRow = newRow.inflate(R.layout.word,parent,false);
+                return new MyRowHolder(thisRow);
             }
 
             @Override
@@ -306,7 +306,7 @@ public class Dictionary extends AppCompatActivity {
                                 records.add(position,removedRecord);
                                 myAdapter.notifyItemInserted(position);
                             }).show();
-                    });
+                });
                 builder.setNegativeButton(getString(string.no), (dialog, cl) -> {
                 });
                 builder.create().show();
@@ -314,7 +314,7 @@ public class Dictionary extends AppCompatActivity {
             });
             wordText = itemView.findViewById(R.id.record);
         }
-   }
+    }
     /**
      * This class holds TextViews(for definition) on a row:
      */
