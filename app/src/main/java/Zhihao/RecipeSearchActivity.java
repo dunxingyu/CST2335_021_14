@@ -196,7 +196,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
                             String imageUrl = recipeObject.getString("image");
                             int id = recipeObject.getInt("id");
 
-                            Recipe recipe = new Recipe(title, imageUrl);
+                            Recipe recipe = new Recipe(id, title, imageUrl);
                             recipe.setId(id);
                             recipeList.add(recipe);
                         }

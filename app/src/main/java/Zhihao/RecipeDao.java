@@ -13,16 +13,14 @@ import java.util.List;
 public interface RecipeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    static void insertRecipe(Recipe recipe) {
-
-    }
+    void insertRecipe(Recipe recipe);
 
     @Delete
     void deleteRecipe(Recipe recipe);
 
     @Query("SELECT * FROM recipes") // Make sure "recipes" matches your @Entity tableName
-    LiveData<List<Recipe>> getAllRecipes();
+    List<Recipe> getAllRecipes();
 
     @Query("SELECT * FROM recipes WHERE id = :recipeId")
-    LiveData<Recipe> getRecipeById(int recipeId);
+    Recipe getRecipeById(int recipeId);
 }
