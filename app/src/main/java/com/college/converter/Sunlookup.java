@@ -194,8 +194,8 @@ public class Sunlookup extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             AlertDialog.Builder builder1 = new AlertDialog.Builder(Sunlookup.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.sunlookup_information)+getString(R.string.sunlookup_information1)+getString(R.string.sunlookup_information2)+getString(R.string.sunlookup_information3));
+            builder1.setTitle(getString(R.string.Sunlookup));
 
             builder1.create().show();
         }
