@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.college.converter.databinding.ActivityMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import Zhihao.RecipeSearchActivity;
 import chaowu.DeezerActivity;
 
 /*
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
             else if (item_id == R.id.second_id) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                 return true;
             }
             else if (item_id == R.id.third_id) {

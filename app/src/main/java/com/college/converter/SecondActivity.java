@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import chaowu.DeezerActivity;
+import Zhihao.RecipeSearchActivity;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -39,7 +39,7 @@ public class SecondActivity extends AppCompatActivity {
                     return true;
                 }
                 else if ( item_id == R.id.forth_id ) {
-                    startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
+                    startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                     return true;
                 }
                 return false;

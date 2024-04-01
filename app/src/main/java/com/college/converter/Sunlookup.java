@@ -46,6 +46,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import Zhihao.RecipeSearchActivity;
 import chaowu.DeezerActivity;
 
 
@@ -129,7 +130,7 @@ public class Sunlookup extends AppCompatActivity {
                         return true;
                     }
                     else if ( item_id == R.id.second_id ) {
-                        startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                        startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                         return true;
                     }
                     else if ( item_id == R.id.third_id ) {
