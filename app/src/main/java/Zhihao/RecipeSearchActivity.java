@@ -1,5 +1,5 @@
 package Zhihao;
-
+// Import statements down below
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -38,7 +38,24 @@ import java.util.concurrent.Executors;
 
 import chaowu.DeezerActivity;
 
+/**
+ * This activity allows users to search for recipes using an external API. It displays
+ * search results in a RecyclerView. Users can also navigate to the details of a specific
+ * recipe, view their favorite recipes, and save their last search term for convenience.
+ *
+ * Features include:
+ * - Searching for recipes by name.
+ * - Displaying search results in a list.
+ * - Saving the last search term in SharedPreferences.
+ * - Navigating to recipe details.
+ * - Viewing saved favorite recipes.
+ *
+ * @author Zhihao Zhang
+ * @version 1.0
+ * @since 2024-04-02
+ */
 public class RecipeSearchActivity extends AppCompatActivity {
+    // Variable declarations, including UI components and data structures for managing recipes
     private static final String PREFS_NAME = "RecipePrefs";
     private static final String SEARCH_TERM_KEY = "recipeSearchTerm";
 
@@ -53,6 +70,15 @@ public class RecipeSearchActivity extends AppCompatActivity {
 
     private Button favoriteRecipes;
 
+    /**
+     * Initializes the activity, its views, and functionalities. It sets up the RecyclerView
+     * for displaying search results and configures the search functionality, including saving
+     * and retrieving the last search term from SharedPreferences.
+     *
+     * @param savedInstanceState If the activity is being re-initialized after
+     *                           previously being shut down then this Bundle contains the data it most
+     *                           recently supplied in onSaveInstanceState(Bundle). Otherwise, it is null.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +93,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setTitle(R.string.app_name);
+        getSupportActionBar().setTitle(R.string.second);
 
         searchEditText = findViewById(R.id.searchEditText);
         searchButton = findViewById(R.id.search_button);
@@ -103,35 +129,39 @@ public class RecipeSearchActivity extends AppCompatActivity {
 
 
     }
-    class MyRowHolder extends RecyclerView.ViewHolder {
-        TextView rowitem;
+//    class MyRowHolder extends RecyclerView.ViewHolder {
+//        TextView rowitem;
+//
+//        public MyRowHolder(@NonNull View itemView, RecipeAdapter adapter) { // Pass the adapter as a parameter
+//            super(itemView);
+//            itemView.setOnClickListener(clk -> {
+//                int position = getAbsoluteAdapterPosition();
+//                Executor thread = Executors.newSingleThreadExecutor();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+//                builder.setMessage("Do you want to add '" + rowitem.getText().toString() + "' to your Favorite List?")
+//                        .setTitle("Question")
+//                        .setNegativeButton("no", (dialog, cl) -> {})
+//                        .setPositiveButton("yes", (dialog, cl) -> {
+//                            thread.execute(() -> {
+//                                // Assuming you have a method to add a recipe to favorites
+//                                // This is a placeholder; replace with your actual method to insert into the database
+//                                // Also ensure that RecipeDao and its method to insert a recipe are correctly implemented
+//                                Recipe recipe = recipeList.get(position);
+//                                // RecipeDao.insertRecipe(recipe); // This should be your method call to insert
+//                                // Assuming you have access to update the UI after insertion
+//                                itemView.post(() -> adapter.notifyItemInserted(recipeList.size() - 1));
+//                            });
+//                        }).create().show();
+//            });
+//            rowitem = itemView.findViewById(R.id.rowitem);
+//        }
+//    }
 
-        public MyRowHolder(@NonNull View itemView, RecipeAdapter adapter) { // Pass the adapter as a parameter
-            super(itemView);
-            itemView.setOnClickListener(clk -> {
-                int position = getAbsoluteAdapterPosition();
-                Executor thread = Executors.newSingleThreadExecutor();
-                AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
-                builder.setMessage("Do you want to add '" + rowitem.getText().toString() + "' to your Favorite List?")
-                        .setTitle("Question")
-                        .setNegativeButton("no", (dialog, cl) -> {})
-                        .setPositiveButton("yes", (dialog, cl) -> {
-                            thread.execute(() -> {
-                                // Assuming you have a method to add a recipe to favorites
-                                // This is a placeholder; replace with your actual method to insert into the database
-                                // Also ensure that RecipeDao and its method to insert a recipe are correctly implemented
-                                Recipe recipe = recipeList.get(position);
-                                // RecipeDao.insertRecipe(recipe); // This should be your method call to insert
-                                // Assuming you have access to update the UI after insertion
-                                itemView.post(() -> adapter.notifyItemInserted(recipeList.size() - 1));
-                            });
-                        }).create().show();
-            });
-            rowitem = itemView.findViewById(R.id.rowitem);
-        }
-    }
 
-
+    /**
+     * Sets up the bottom navigation view and its item selection behavior, allowing
+     * navigation between different sections of the application.
+     */
     protected void setupBottomNavigationView() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.second_id);
@@ -154,12 +184,26 @@ public class RecipeSearchActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inflates the menu options for the activity from a menu resource.
+     *
+     * @param menu The options menu in which you place your items.
+     * @return You must return true for the menu to be displayed; if you return false it will not be shown.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
 
+    /**
+     * Handles action bar item clicks here. The action bar will automatically handle clicks
+     * on the Home/Up button, so long as you specify a parent activity in AndroidManifest.xml.
+     *
+     * @param item The menu item that was selected.
+     * @return boolean Return false to allow normal menu processing to proceed,
+     * true to consume it here.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -178,7 +222,12 @@ public class RecipeSearchActivity extends AppCompatActivity {
     }
 
 
-
+    /**
+     * Performs the recipe search using the specified query string. It sends a request to
+     * the external API and processes the response to update the UI with the search results.
+     *
+     * @param query The search term used to query the recipe API.
+     */
     private void searchRecipes(String query) {
         String apiKey = "7db24f50bd8c4927aff6c87ea850979b"; // Replace with your actual API key
         String url = "https://api.spoonacular.com/recipes/complexSearch?query=" + query + "&apiKey=" + apiKey;
