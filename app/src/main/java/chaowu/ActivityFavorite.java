@@ -146,6 +146,7 @@ public class ActivityFavorite extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.forth_id ) {
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                 return true;
             }
             return false;
@@ -163,8 +164,8 @@ public class ActivityFavorite extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ActivityFavorite.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.deezer_information));
+            builder1.setTitle(getString(R.string.deezer_info_title));
 
             builder1.create().show();
         }
@@ -211,14 +212,14 @@ public class ActivityFavorite extends AppCompatActivity {
                 });
                 songs.remove(position); // Remove the song from the list
                 myAdapter.notifyItemRemoved(position); // Notify adapter about the removal
-                Snackbar.make(rowitem2,"delete"+position,Snackbar.LENGTH_LONG).
-                        setAction("Todo", click -> {
+                Snackbar.make(rowitem2,getString(R.string.chao_delete)+deletedSong.getTitle(),Snackbar.LENGTH_LONG).
+                        setAction(R.string.undo, click -> {
                             songs.add(position,deletedSong);
                             Executor thread2 = Executors.newSingleThreadExecutor();
                             thread2.execute(() ->
                             {
                                 sDAO.insertSong(deletedSong);
-                                //m.id=(int)id;
+
                             });
                             myAdapter.notifyItemInserted(position);
                         }).show();

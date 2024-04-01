@@ -25,4 +25,17 @@
     <string name="dictionary_information">此APP支持用户查找用户输入的单词的定义。用户可以单击保存按钮将搜索词和定义保存到数据库中，单击查看按钮查看搜索词和定义的历史记录。</string>
     <string name="dictionary_info_title">词典API指引</string>
     <string name="back">返回主页</string>
+    <!--chaowu-->
+    <string name="deezer_information">音乐搜索和收藏应用允许用户搜索自己喜欢的艺人并浏览他们的歌曲。它利用 Deezer API 获取艺术家信息和歌曲详情。用户可以保存自己喜欢的歌曲，以便日后查看，也可以在应用程序中对其进行管理。</string>
+    <string name="deezer_info_title">音乐教程</string>
+    <string name="chao_add">你想要加 “</string>
+    <string name="chao_add2">" 到你的收藏吗?</string>
+    <string name="chao_delete">删除的音乐： </string>
+    <string name="chao_favorite">收藏音乐</string>
+    <string name="chao_artist">音乐人</string>
+    <string name="chao_titile">名字： </string>
+    <string name="chao_duration">时长: </string>
+    <string name="chao_album">专辑: </string>
+    <string name="chao_cover">封面: </string>
+    <string name="chao_detail">音乐信息</string>
 </resources>

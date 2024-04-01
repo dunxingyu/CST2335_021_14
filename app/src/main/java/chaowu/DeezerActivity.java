@@ -98,7 +98,7 @@ public class DeezerActivity extends AppCompatActivity {
         songs = songModel.songs.getValue();
         if(songtest == null){
 
-            fetchSong("q");
+            fetchSong("le");
         }
 
 
@@ -135,10 +135,8 @@ public class DeezerActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                String obj = songs.get(position).getTitle();
-                //String testname = songtest.get(position).toString();
-                //holder.timeText.setText(messages.get(position).getTimeSpent());
+
                 holder.rowitem.setText(obj);
-                //holder.rowitem.setText(testname);
 
             }
 
@@ -153,7 +151,7 @@ public class DeezerActivity extends AppCompatActivity {
             }
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.third_id);
+        bottomNavigationView.setSelectedItemId(R.id.forth_id);
 
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -192,10 +190,10 @@ public class DeezerActivity extends AppCompatActivity {
                 int position = getAbsoluteAdapterPosition();
                 Executor thread = Executors.newSingleThreadExecutor();
                 AlertDialog.Builder builder = new AlertDialog.Builder( DeezerActivity.this );
-                builder.setMessage("Do you want to add '"+ rowitem.getText().toString()+"' to your Favorite List?")
-                        .setTitle("Question")
-                        .setNegativeButton("no",(dialog, cl)->{}).
-                        setPositiveButton("yes",(dialog, cl)->{
+                builder.setMessage(getString(R.string.chao_add)+ rowitem.getText().toString()+getString(R.string.chao_add2))
+                        .setTitle(R.string.question)
+                        .setNegativeButton(R.string.no,(dialog, cl)->{}).
+                        setPositiveButton(R.string.yes,(dialog, cl)->{
                             thread.execute(() ->
                             {
                                 sDAO.insertSong(songs.get(position));
@@ -221,8 +219,8 @@ public class DeezerActivity extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(DeezerActivity.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.deezer_information));
+            builder1.setTitle(getString(R.string.deezer_info_title));
 
             builder1.create().show();
         }

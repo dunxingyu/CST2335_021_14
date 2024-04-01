@@ -26,4 +26,20 @@
     <string name="dictionary_info_title">Dictionary API instructions</string>
     <string name="back">Back Home</string>
     <string name="error_msg">Please enter a valid word</string>
+    <!--chaowu-->
+    <string name="deezer_information">The Music Search and Favorites app allows users to search for their favorite artists and explore their songs. It leverages the Deezer API to fetch artist information and song details. Users can save their favorite songs for later viewing and manage them within the app. </string>
+    <string name="deezer_info_title">Deezer Song API Instruction</string>
+    <string name="chao_add">Do you want to add "</string>to your Favorite List?
+    <string name="chao_add2">" to your Favorite List? </string>
+    <string name="chao_delete">Deleted Song:  </string>
+    <string name="chao_favorite">Favorite Songs</string>
+    <string name="chao_artist">Artist name</string>
+    <string name="chao_titile">Title: </string>
+    <string name="chao_duration">Duration: </string>
+    <string name="chao_album">Album: </string>
+    <string name="chao_cover">Cover: </string>
+    <string name="chao_detail">Songs Detail</string>
+
+
+
 </resources>

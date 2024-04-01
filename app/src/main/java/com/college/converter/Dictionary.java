@@ -35,6 +35,8 @@ import com.android.volley.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import chaowu.DeezerActivity;
+
 /**
  * This application has an EditText for entering a word to look up the definition via internet.
  * User can see the definitions and save the search term and the definitions for viewing later.
@@ -219,7 +221,7 @@ public class Dictionary extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.forth_id ) {
-                startActivity(new Intent(getApplicationContext(), ForthActivity.class));
+                startActivity(new Intent(getApplicationContext(), DeezerActivity.class));
                 return true;
             }
             return false;
