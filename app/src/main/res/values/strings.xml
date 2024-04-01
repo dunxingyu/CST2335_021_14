@@ -69,11 +69,14 @@
     <!--Recipe Search value strings-->
     <string name="search_hint">Enter a recipe name...</string>
     <string name="search_button">Search</string>
+    <string name="favorite_recipes">Search</string>
     <string name="enter_search_term">Please enter a search term.</string>
     <string name="error_fetch_data">Error fetching data. Please try again later.</string>
     <string name="error_occurred">An error occurred. Please try again.</string>
     <string name="recipe_deleted">Recipe "%1$s" deleted</string>
     <string name="help_info">Help information not available.</string>
+    <string name="recipe_search_information">the.</string>
+    <string name="recipe_search_info_title">Recipe_Search_API_Instruction</string>
 
 
 
