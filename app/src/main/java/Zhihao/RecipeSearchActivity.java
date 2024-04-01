@@ -25,7 +25,6 @@ import com.android.volley.toolbox.Volley;
 import com.college.converter.Dictionary;
 import com.college.converter.MainActivity;
 import com.college.converter.R;
-import com.college.converter.R.id;
 import com.college.converter.Sunlookup;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -69,7 +68,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(R.string.app_name);
 
         searchEditText = findViewById(R.id.searchEditText);
-        searchButton = findViewById(R.id.searchButton);
+        searchButton = findViewById(R.id.search_button);
         recipesRecyclerView = findViewById(R.id.recipesRecyclerView);
 
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
@@ -93,29 +92,31 @@ public class RecipeSearchActivity extends AppCompatActivity {
         // Now setup the BottomNavigationView
         setupBottomNavigationView(); // Add this line
     }
-    class MyRowHolder extends RecyclerView.ViewHolder{
+    class MyRowHolder extends RecyclerView.ViewHolder {
         TextView rowitem;
 
-        public MyRowHolder(@NonNull View itemView){
+        public MyRowHolder(@NonNull View itemView, RecipeAdapter adapter) { // Pass the adapter as a parameter
             super(itemView);
-            itemView.setOnClickListener(clk ->{
+            itemView.setOnClickListener(clk -> {
                 int position = getAbsoluteAdapterPosition();
                 Executor thread = Executors.newSingleThreadExecutor();
-                AlertDialog.Builder builder = new AlertDialog.Builder( RecipeSearchActivity.this );
-                builder.setMessage("Do you want to add '"+ rowitem.getText().toString()+"' to your Favorite List?")
+                AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                builder.setMessage("Do you want to add '" + rowitem.getText().toString() + "' to your Favorite List?")
                         .setTitle("Question")
-                        .setNegativeButton("no",(dialog, cl)->{}).
-                        setPositiveButton("yes",(dialog, cl)->{
-                            thread.execute(() ->
-                            {
-                                RecipeDao.insertRecipe(recipeList.get(position));
+                        .setNegativeButton("no", (dialog, cl) -> {})
+                        .setPositiveButton("yes", (dialog, cl) -> {
+                            thread.execute(() -> {
+                                // Assuming you have a method to add a recipe to favorites
+                                // This is a placeholder; replace with your actual method to insert into the database
+                                // Also ensure that RecipeDao and its method to insert a recipe are correctly implemented
+                                Recipe recipe = recipeList.get(position);
+                                // RecipeDao.insertRecipe(recipe); // This should be your method call to insert
+                                // Assuming you have access to update the UI after insertion
+                                itemView.post(() -> adapter.notifyItemInserted(recipeList.size() - 1));
                             });
-                            RecipeAdapter.notifyItemInserted(recipeList.size()-1);
-
                         }).create().show();
             });
             rowitem = itemView.findViewById(R.id.rowitem);
-
         }
     }
 
@@ -168,7 +169,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
 
 
     private void searchRecipes(String query) {
-        String apiKey = "90c0e8c3cef743a8b0e2c98d7401ec6e"; // Replace with your actual API key
+        String apiKey = "7db24f50bd8c4927aff6c87ea850979b"; // Replace with your actual API key
         String url = "https://api.spoonacular.com/recipes/complexSearch?query=" + query + "&apiKey=" + apiKey;
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
