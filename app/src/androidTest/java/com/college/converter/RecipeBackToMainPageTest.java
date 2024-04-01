@@ -2,13 +2,12 @@ package com.college.converter;
 
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 
@@ -30,25 +29,40 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class Test1 {
+public class RecipeBackToMainPageTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void test1() {
-        ViewInteraction appCompatEditText = onView(withId(R.id.entryId));
-        appCompatEditText.perform(replaceText(String.valueOf(369.0)), closeSoftKeyboard());
+    public void recipeBackToMainPageTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.second_id), withContentDescription("Recipe"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                2),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
 
+        ViewInteraction actionMenuItemView = onView(
+                allOf(withId(R.id.home), withContentDescription("Home"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.toolbar),
+                                        1),
+                                1),
+                        isDisplayed()));
+        actionMenuItemView.perform(click());
 
-        ViewInteraction materialButton = onView(withId(R.id.convertButton));
-        materialButton.perform(click());
-
-        ViewInteraction result = onView(withId(R.id.resultId));
-        result.check(matches(withText("295.2 Euros")));
-
-
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView2), withText("Welcome"),
+                        withParent(allOf(withId(R.id.container),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        textView.check(matches(withText("Welcome")));
     }
 
     private static Matcher<View> childAtPosition(

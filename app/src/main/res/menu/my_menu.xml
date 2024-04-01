@@ -15,5 +15,6 @@
         android:title="@string/home"
         android:icon="@drawable/homeicon"
         app:showAsAction ="always"
+
         />
 </menu>

@@ -3,11 +3,9 @@ package com.college.converter;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
-import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -31,37 +29,40 @@ import org.junit.runner.RunWith;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest {
+public class RecipeSearchFunctionTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void mainActivityTest4() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(5161);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void recipeSearchFunctionTest() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.second_id), withContentDescription("Recipe"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                2),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
 
-        ViewInteraction appCompatEditText = onView(withId(R.id.entryId));
-        appCompatEditText.perform(click());
-
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.entryId));
-        appCompatEditText2.perform(replaceText("85"), closeSoftKeyboard());
-
-        ViewInteraction appCompatEditText3 = onView(withId(R.id.entryId));
-        appCompatEditText3.perform(pressImeActionButton());
-
-        ViewInteraction materialButton = onView(withId(R.id.convertButton));
+        ViewInteraction materialButton = onView(
+                allOf(withId(R.id.search_button), withText("Search"),
+                        childAtPosition(
+                                allOf(withId(R.id.main),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                4),
+                        isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(withId(R.id.resultId));
-        textView.check(matches(withText("68.0 Euros")));
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.recipeTitle), withText("Noodle Free Eggplant and Spinach Lasagna"),
+                        withParent(withParent(withId(R.id.recipesRecyclerView))),
+                        isDisplayed()));
+        textView.check(matches(withText("Noodle Free Eggplant and Spinach Lasagna")));
     }
 
     private static Matcher<View> childAtPosition(

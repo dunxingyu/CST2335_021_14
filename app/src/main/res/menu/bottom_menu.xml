@@ -8,6 +8,7 @@
         android:title="@string/home"
         android:icon="@drawable/homeicon"/>
 
+
     <item
         android:id="@+id/first_id"
         android:title="@string/first"
@@ -27,5 +28,5 @@
         android:id="@+id/forth_id"
         android:title="@string/forth"
         android:icon="@drawable/icon_music_album"/>
-    
+
 </menu>

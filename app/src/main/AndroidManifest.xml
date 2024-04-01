@@ -14,20 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NoToolbar"
         tools:targetApi="31">
+
         <activity
-            android:name=".FirstActivity"
+            android:name=".Sunlookup"
+            android:exported="true">
+
+        </activity>
+
+        <activity
+            android:name="com.college.converter.Dictionary"
+            android:exported="true" />
+
+
+        <activity
+            android:name="chaowu.DetailSong"
+            android:exported="false" />
+        <activity
+            android:name="chaowu.ActivityFavorite"
+            android:exported="false" />
+       <activity
+            android:name="chaowu.DeezerActivity"
+            android:exported="false" />
+        <activity
+            android:name="Zhihao.FavoriteActivity"
             android:exported="true" />
         <activity
-            android:name=".SecondActivity"
+            android:name="Zhihao.RecipeDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".Dictionary"
+            android:name="Zhihao.RecipeSearchActivity"
             android:exported="true" />
+
         <activity
-            android:name=".ForthActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
+            android:name="com.college.converter.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

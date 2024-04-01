@@ -3,11 +3,9 @@ package com.college.converter;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.pressImeActionButton;
-import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -28,40 +26,45 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
+/**
+ * This MainToDictionaryActivityTest includes 1 tests.(Other 4 tests is in the DictonaryActivityTest Class)
+ * Lab section: 021
+ * Creation date: March 25, 2024
+ * @author Qi Cheng
+ * @version  1.0
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class MainActivityTest3 {
+public class MainToDictionaryActivityTest {
 
     @Rule
     public ActivityScenarioRule<MainActivity> mActivityScenarioRule =
             new ActivityScenarioRule<>(MainActivity.class);
-
+    /**
+     * This function test the app launches from MainActivity, if user click the Dictionary button from
+     * the bottom navigation, the app will goes to DictionaryActivity.
+     */
     @Test
-    public void mainActivityTest3() {
-        // Added a sleep statement to match the app's execution delay.
-        // The recommended way to handle such scenarios is to use Espresso idling resources:
-        // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html
-        try {
-            Thread.sleep(5428);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    public void mainToDictionaryActivityTest() {
 
-        ViewInteraction appCompatEditText = onView(withId(R.id.entryId));
-        appCompatEditText.perform(click());
 
-        ViewInteraction appCompatEditText2 = onView(withId(R.id.entryId));
-        appCompatEditText2.perform(replaceText("100"), closeSoftKeyboard());
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.third_id), withContentDescription("Dictionary"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.bottom_navigation),
+                                        0),
+                                3),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
 
-        ViewInteraction appCompatEditText3 = onView(withId(R.id.entryId));
-        appCompatEditText3.perform(pressImeActionButton());
 
-        ViewInteraction materialButton = onView(withId(R.id.convertButton));
-        materialButton.perform(click());
 
-        ViewInteraction editText = onView(withId(R.id.entryId));
-        editText.check(matches(withText("100")));
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.word), withText("Word"),
+                        withParent(withParent(withId(android.R.id.content))),
+                        isDisplayed()));
+        textView.check(matches(withText("Word")));
     }
 
     private static Matcher<View> childAtPosition(
