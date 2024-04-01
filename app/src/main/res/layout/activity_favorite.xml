@@ -16,8 +16,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle2"
         android:layout_width="293dp"
-        android:layout_height="425dp"
-        android:layout_marginTop="70dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -27,13 +27,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="166dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="187dp"
-        android:text="Favorite Songs"
+        android:text="@string/chao_favorite"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <include
-        layout="@layout/bottom_navigation" />
+        layout="@layout/bottom_navigation"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="153dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

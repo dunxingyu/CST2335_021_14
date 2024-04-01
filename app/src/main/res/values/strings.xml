@@ -22,7 +22,7 @@
     <string name="lookup" >Lookup</string>
     <string name="view">View</string>
     <string name="favourate">Favourite</string>
-    <string name="latlgt">Lat-------Lng</string>
+    <string name="latlgt">Lat---------Lng</string>
 
     <string name="sundb" translatable="false">sundb</string>
     <string name="searchRecord" translatable="false">searchRecord</string>
@@ -69,5 +69,34 @@
     <string name="dssa">Deezer song search api</string>
     <string name="thank">Thank you using this APP</string>
     <string name="Welcome">Welcome</string>
+
+    <!--Recipe Search value strings-->
+    <string name="search_hint">Enter a recipe name...</string>
+    <string name="search_button">Search</string>
+    <string name="favorite_recipes">favorite list</string>
+    <string name="enter_search_term">Please enter a search term.</string>
+    <string name="error_fetch_data">Error fetching data. Please try again later.</string>
+    <string name="error_occurred">An error occurred. Please try again.</string>
+    <string name="recipe_deleted">Recipe "%1$s" deleted</string>
+    <string name="help_info">Help information not available.</string>
+    <string name="recipe_search_information">This app allows users to search for recipes by entering a keyword. Users can view detailed information about each recipe, including images, summaries, and source URLs. There is also functionality to save favorite recipes to a database for easy access later. The search history is preserved, so users can quickly find previously searched terms and their results.</string>
+    <string name="recipe_search_info_title">Recipe_Search_API_Instruction</string>
+    <string name="remove_favorite">remove</string>
+    <string name="favorite_has_added">favorite_has_added</string>
+
     <!---->
+    <!--chaowu-->
+    <string name="deezer_information">The Music Search and Favorites app allows users to search for their favorite artists and explore their songs. It leverages the Deezer API to fetch artist information and song details. Users can save their favorite songs for later viewing and manage them within the app. </string>
+    <string name="deezer_info_title">Deezer Song API Instruction</string>
+    <string name="chao_add">Do you want to add "</string>to your Favorite List?
+    <string name="chao_add2">" to your Favorite List? </string>
+    <string name="chao_delete">Deleted Song:  </string>
+    <string name="chao_favorite">Favorite Songs</string>
+    <string name="chao_artist">Artist name</string>
+    <string name="chao_titile">Title: </string>
+    <string name="chao_duration">Duration: </string>
+    <string name="chao_album">Album: </string>
+    <string name="chao_cover">Cover: </string>
+    <string name="chao_detail">Songs Detail</string>
+    <string name="songDetail_chao">Detail</string>
 </resources>

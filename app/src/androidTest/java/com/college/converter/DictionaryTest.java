@@ -2,21 +2,16 @@ package com.college.converter;
 
 
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.Espresso.pressBack;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
-import static androidx.test.espresso.action.ViewActions.longClick;
 import static androidx.test.espresso.action.ViewActions.replaceText;
-import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.is;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,7 +28,13 @@ import org.hamcrest.TypeSafeMatcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
+/**
+ * This DictionaryTest includes 4 tests.(Another test is in the MainToDictonaryActivityTest Class)
+ * Lab section: 021
+ * Creation date: March 25, 2024
+ * @author Qi Cheng
+ * @version  1.0
+ */
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class DictionaryTest {
@@ -147,97 +148,31 @@ public class DictionaryTest {
         textView.check(matches(withText("The APP support user to look up the definitions of word which is entered by the user. User can click save button to save the search term and definitions in the database and click view button to see the history of the search term and definitions.")));
     }
 
-//    /**
-//     * This function check if user view the history, click on one record, the word should display on the screen.
-//     */
-//    @Test
-//    public void dictionaryViewTest() {
-//
-//        ViewInteraction appCompatEditText = onView(
-//                allOf(withId(R.id.editText_word), withText("tea"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                2),
-//                        isDisplayed()));
-//        appCompatEditText.perform(longClick());
-//
-//
-//        ViewInteraction materialButton2 = onView(
-//                allOf(withId(R.id.button_search), withText("Look up"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                4),
-//                        isDisplayed()));
-//        materialButton2.perform(click());
-//
-//        ViewInteraction materialButton3 = onView(
-//                allOf(withId(R.id.button_save), withText("Save"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                5),
-//                        isDisplayed()));
-//        materialButton3.perform(click());
-//
-//        ViewInteraction appCompatEditText2 = onView(
-//                allOf(withId(R.id.editText_word), withText("tea"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                2),
-//                        isDisplayed()));
-//        appCompatEditText2.perform(replaceText("see"));
-//
-//        ViewInteraction appCompatEditText3 = onView(
-//                allOf(withId(R.id.editText_word), withText("see"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                2),
-//                        isDisplayed()));
-//        appCompatEditText3.perform(closeSoftKeyboard());
-//
-//        ViewInteraction materialButton4 = onView(
-//                allOf(withId(R.id.button_search), withText("Look up"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                4),
-//                        isDisplayed()));
-//        materialButton4.perform(click());
-//
-//        ViewInteraction materialButton5 = onView(
-//                allOf(withId(R.id.button_save), withText("Save"),
-//                        childAtPosition(
-//                                childAtPosition(
-//                                        withId(android.R.id.content),
-//                                        0),
-//                                5),
-//                        isDisplayed()));
-//        materialButton5.perform(click());
-//
-//        ViewInteraction recyclerView = onView(
-//                allOf(withId(R.id.recycleView),
-//                        childAtPosition(
-//                                withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-//                                8)));
-//        recyclerView.perform(actionOnItemAtPosition(2, click()));
-//
-//        ViewInteraction editText = onView(
-//                allOf(withId(R.id.editText_word), withText("tea"),
-//                        withParent(withParent(withId(android.R.id.content))),
-//                        isDisplayed()));
-//        editText.check(matches(withText("tea")));
-//    }
-//
+    /**
+     * This function check if user click the "back-home" button, the app will go back to the main activity.
+     */
+    @Test
+    public void dictionaryBackHomeTest() {
+
+
+        ViewInteraction actionMenuItemView = onView(
+                allOf(withId(R.id.home), withContentDescription("Home"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.toolbar),
+                                        1),
+                                1),
+                        isDisplayed()));
+        actionMenuItemView.perform(click());
+
+        ViewInteraction textView = onView(
+                allOf(withId(R.id.textView2), withText("Welcome"),
+                        withParent(allOf(withId(R.id.container),
+                                withParent(withId(android.R.id.content)))),
+                        isDisplayed()));
+        textView.check(matches(withText("Welcome")));
+    }
+
 //    /**
 //     * This function check if user undo the deleting, the history word should display at the same position on the screen.
 //     */

@@ -10,13 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.college.converter.Dictionary;
-import com.college.converter.FirstActivity;
 import com.college.converter.MainActivity;
 import com.college.converter.R;
-import com.college.converter.SecondActivity;
+import com.college.converter.Sunlookup;
 import com.college.converter.databinding.ActivityDetailSongBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
+
+import Zhihao.RecipeSearchActivity;
 
 public class DetailSong extends AppCompatActivity {
     ActivityDetailSongBinding binding;
@@ -37,7 +38,7 @@ public class DetailSong extends AppCompatActivity {
         binding.textView9.setText(album);
         Picasso.get().load(cover).into(binding.imageView);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.third_id);
+        bottomNavigationView.setSelectedItemId(R.id.forth_id);
 
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -47,11 +48,11 @@ public class DetailSong extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             else if (item_id == R.id.first_id) {
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                 return true;
             }
             else if ( item_id == R.id.second_id ) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                 return true;
             }
             else if ( item_id == R.id.third_id ) {
@@ -79,8 +80,8 @@ public class DetailSong extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(DetailSong.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.deezer_information));
+            builder1.setTitle(getString(R.string.deezer_info_title));
 
             builder1.create().show();
         }

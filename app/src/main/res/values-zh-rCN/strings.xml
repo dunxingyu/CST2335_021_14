@@ -49,8 +49,36 @@
     <string name="dssa">打击乐查询</string>
     <string name="thank">谢谢使用！</string>
 
+    <!--Recipe Search value strings-->
+    <string name="search_hint">输入菜单名...</string>
+    <string name="search_button">搜索</string>
+    <string name="favorite_recipes">喜爱收藏列表</string>
+    <string name="enter_search_term">请输入搜索内容</string>
+    <string name="error_fetch_data">取回信息错误</string>
+    <string name="error_occurred">错误发生，请再试一遍</string>
+    <string name="recipe_deleted">菜单删除</string>
+    <string name="help_info">求助信息不可用</string>
+    <string name="recipe_search_information">此应用程序允许用户通过输入关键字来搜索食谱。用户可以查看有关每个配方的详细信息，包括图像、摘要和源 URL。还有将喜欢的食谱保存到数据库的功能，以便以后轻松访问。搜索历史记录会保留，因此用户可以快速找到以前搜索过的字词及其结果。</string>
+    <string name="recipe_search_info_title">菜单搜索API说明</string>
+    <string name="remove_favorite">去除</string>
+    <string name="favorite_has_added">喜爱的菜单已加入</string>
+
     <!--
 
     -->
+    <!--chaowu-->
+    <string name="deezer_information">音乐搜索和收藏应用允许用户搜索自己喜欢的艺人并浏览他们的歌曲。它利用 Deezer API 获取艺术家信息和歌曲详情。用户可以保存自己喜欢的歌曲，以便日后查看，也可以在应用程序中对其进行管理。</string>
+    <string name="deezer_info_title">音乐教程</string>
+    <string name="chao_add">你想要加 “</string>
+    <string name="chao_add2">" 到你的收藏吗?</string>
+    <string name="chao_delete">删除的音乐： </string>
+    <string name="chao_favorite">收藏音乐</string>
+    <string name="chao_artist">音乐人</string>
+    <string name="chao_titile">名字： </string>
+    <string name="chao_duration">时长: </string>
+    <string name="chao_album">专辑: </string>
+    <string name="chao_cover">封面: </string>
+    <string name="chao_detail">音乐信息</string>
+    <string name="songDetail_chao">具体消息</string>
 
 </resources>

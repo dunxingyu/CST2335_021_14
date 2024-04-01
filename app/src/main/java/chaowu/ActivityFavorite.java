@@ -19,10 +19,9 @@ import androidx.room.Room;
 
 import com.android.volley.RequestQueue;
 import com.college.converter.Dictionary;
-import com.college.converter.FirstActivity;
 import com.college.converter.MainActivity;
 import com.college.converter.R;
-import com.college.converter.SecondActivity;
+import com.college.converter.Sunlookup;
 import com.college.converter.databinding.ActivityFavoriteBinding;
 import com.college.converter.databinding.ViewDatabaseBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,6 +31,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import Zhihao.RecipeSearchActivity;
 import data.SongViewModel;
 
 public class ActivityFavorite extends AppCompatActivity {
@@ -51,7 +51,9 @@ public class ActivityFavorite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityFavoriteBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.toolbar.setTitle(getString(R.string.forth));
         setSupportActionBar(binding.toolbar);
+
         songModel = new ViewModelProvider(this).get(SongViewModel.class);
 
 
@@ -104,7 +106,7 @@ public class ActivityFavorite extends AppCompatActivity {
             }
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.third_id);
+        bottomNavigationView.setSelectedItemId(R.id.forth_id);
 
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
@@ -114,11 +116,11 @@ public class ActivityFavorite extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
             else if (item_id == R.id.first_id) {
-                startActivity(new Intent(getApplicationContext(), FirstActivity.class));
+                startActivity(new Intent(getApplicationContext(), Sunlookup.class));
                 return true;
             }
             else if ( item_id == R.id.second_id ) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                 return true;
             }
             else if ( item_id == R.id.third_id ) {
@@ -145,8 +147,8 @@ public class ActivityFavorite extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(ActivityFavorite.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.deezer_information));
+            builder1.setTitle(getString(R.string.deezer_info_title));
 
             builder1.create().show();
         }
@@ -193,14 +195,14 @@ public class ActivityFavorite extends AppCompatActivity {
                 });
                 songs.remove(position); // Remove the song from the list
                 myAdapter.notifyItemRemoved(position); // Notify adapter about the removal
-                Snackbar.make(rowitem2,"delete"+position,Snackbar.LENGTH_LONG).
-                        setAction("Todo", click -> {
+                Snackbar.make(rowitem2,getString(R.string.chao_delete)+deletedSong.getTitle(),Snackbar.LENGTH_LONG).
+                        setAction(R.string.undo, click -> {
                             songs.add(position,deletedSong);
                             Executor thread2 = Executors.newSingleThreadExecutor();
                             thread2.execute(() ->
                             {
                                 sDAO.insertSong(deletedSong);
-                                //m.id=(int)id;
+
                             });
                             myAdapter.notifyItemInserted(position);
                         }).show();

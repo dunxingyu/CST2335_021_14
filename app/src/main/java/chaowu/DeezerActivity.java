@@ -31,7 +31,6 @@ import com.android.volley.toolbox.Volley;
 import com.college.converter.Dictionary;
 import com.college.converter.MainActivity;
 import com.college.converter.R;
-import com.college.converter.SecondActivity;
 import com.college.converter.Sunlookup;
 import com.college.converter.databinding.ActivityDeezerBinding;
 import com.college.converter.databinding.ViewRowBinding;
@@ -45,6 +44,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import Zhihao.RecipeSearchActivity;
 import data.SongViewModel;
 
 public class DeezerActivity extends AppCompatActivity {
@@ -67,6 +67,7 @@ public class DeezerActivity extends AppCompatActivity {
 
         binding = ActivityDeezerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.toolbar.setTitle(getString(R.string.forth));
         setSupportActionBar(binding.toolbar);
         //setContentView(R.layout.activity_deezer);
 
@@ -92,7 +93,7 @@ public class DeezerActivity extends AppCompatActivity {
         songs = songModel.songs.getValue();
         if(songtest == null){
 
-            fetchSong("q");
+            fetchSong("le");
         }
 
 
@@ -129,10 +130,8 @@ public class DeezerActivity extends AppCompatActivity {
             @Override
             public void onBindViewHolder(@NonNull MyRowHolder holder, int position) {
                 String obj = songs.get(position).getTitle();
-                //String testname = songtest.get(position).toString();
-                //holder.timeText.setText(messages.get(position).getTimeSpent());
+
                 holder.rowitem.setText(obj);
-                //holder.rowitem.setText(testname);
 
             }
 
@@ -161,7 +160,7 @@ public class DeezerActivity extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.second_id ) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                 return true;
             }
             else if ( item_id == R.id.third_id ) {
@@ -186,10 +185,10 @@ public class DeezerActivity extends AppCompatActivity {
                 int position = getAbsoluteAdapterPosition();
                 Executor thread = Executors.newSingleThreadExecutor();
                 AlertDialog.Builder builder = new AlertDialog.Builder( DeezerActivity.this );
-                builder.setMessage("Do you want to add '"+ rowitem.getText().toString()+"' to your Favorite List?")
-                        .setTitle("Question")
-                        .setNegativeButton("no",(dialog, cl)->{}).
-                        setPositiveButton("yes",(dialog, cl)->{
+                builder.setMessage(getString(R.string.chao_add)+ rowitem.getText().toString()+getString(R.string.chao_add2))
+                        .setTitle(R.string.question)
+                        .setNegativeButton(R.string.no,(dialog, cl)->{}).
+                        setPositiveButton(R.string.yes,(dialog, cl)->{
                             thread.execute(() ->
                             {
                                 sDAO.insertSong(songs.get(position));
@@ -215,8 +214,8 @@ public class DeezerActivity extends AppCompatActivity {
         int id = item.getItemId();
         if ( id ==  R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(DeezerActivity.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.deezer_information));
+            builder1.setTitle(getString(R.string.deezer_info_title));
 
             builder1.create().show();
         }

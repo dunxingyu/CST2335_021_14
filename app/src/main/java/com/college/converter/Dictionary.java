@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -29,6 +30,7 @@ import com.college.converter.R.string;
 import com.college.converter.data.DictionaryDAO;
 import com.college.converter.data.DictionaryDatabase;
 import com.college.converter.data.DictionaryRecord;
+import com.college.converter.data.DictionaryViewModel;
 import com.college.converter.databinding.ActivityDictionaryBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,6 +43,7 @@ import java.util.ArrayList;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import Zhihao.RecipeSearchActivity;
 import chaowu.DeezerActivity;
 
 /**
@@ -118,6 +121,8 @@ public class Dictionary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        DictionaryViewModel dictionaryModel = new ViewModelProvider(this).get(DictionaryViewModel.class);
+
         binding = ActivityDictionaryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -125,12 +130,15 @@ public class Dictionary extends AppCompatActivity {
                 .build();
         dictionaryDAO = db.dicDAO();
 
+        binding.toolbar.setTitle(getString(string.third));
         setSupportActionBar(binding.toolbar);
+
+        records=dictionaryModel.records.getValue();
 
         queue= Volley.newRequestQueue(this);
 
         if (records == null) {
-            records = new ArrayList<>();
+            dictionaryModel.records.postValue(records=new ArrayList<DictionaryRecord>());
             Executor thread = Executors.newSingleThreadExecutor();
             thread.execute(() ->
             {
@@ -220,7 +228,7 @@ public class Dictionary extends AppCompatActivity {
                 return true;
             }
             else if ( item_id == R.id.second_id ) {
-                startActivity(new Intent(getApplicationContext(), SecondActivity.class));
+                startActivity(new Intent(getApplicationContext(), RecipeSearchActivity.class));
                 return true;
             }
             else if ( item_id == R.id.third_id ) {

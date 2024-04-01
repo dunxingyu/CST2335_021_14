@@ -7,11 +7,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/app_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="@string/Welcome"
         android:textColor="@color/black"
         android:textSize="34sp"
@@ -19,13 +26,12 @@
         android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/include2"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         app:layout_constraintVertical_bias="0.120000005" />
     <TextView
         android:id="@+id/textView_sun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:layout_marginTop="50dp"
         android:text="@string/sun"
         android:textColor="@color/black"
@@ -39,7 +45,6 @@
         android:id="@+id/textView_rs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="@string/RecipeSearch"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -53,7 +58,6 @@
         android:id="@+id/textView_da"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="@string/da"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -67,7 +71,6 @@
         android:id="@+id/textView_dssa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="@string/dssa"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -81,7 +84,6 @@
         android:id="@+id/textView_th"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-thin"
         android:text="@string/thank"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -95,7 +97,7 @@
 
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/include"
         layout="@layout/bottom_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
