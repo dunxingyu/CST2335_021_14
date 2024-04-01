@@ -3,6 +3,8 @@ package com.college.converter;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
@@ -36,7 +38,7 @@ public class RecipeSearchFunctionTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void recipeSearchFunctionTest() {
+    public void recipeSearchTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.second_id), withContentDescription("Recipe"),
                         childAtPosition(
@@ -46,6 +48,17 @@ public class RecipeSearchFunctionTest {
                                 2),
                         isDisplayed()));
         bottomNavigationItemView.perform(click());
+
+        ViewInteraction appCompatEditText = onView(
+                allOf(withId(R.id.searchEditText),
+                        childAtPosition(
+                                allOf(withId(R.id.main),
+                                        childAtPosition(
+                                                withId(android.R.id.content),
+                                                0)),
+                                1),
+                        isDisplayed()));
+        appCompatEditText.perform(replaceText("noodle"), closeSoftKeyboard());
 
         ViewInteraction materialButton = onView(
                 allOf(withId(R.id.search_button), withText("Search"),
@@ -58,11 +71,12 @@ public class RecipeSearchFunctionTest {
                         isDisplayed()));
         materialButton.perform(click());
 
-        ViewInteraction textView = onView(
-                allOf(withId(R.id.recipeTitle), withText("Noodle Free Eggplant and Spinach Lasagna"),
-                        withParent(withParent(withId(R.id.recipesRecyclerView))),
+        ViewInteraction editText = onView(
+                allOf(withId(R.id.searchEditText), withText("noodle"),
+                        withParent(allOf(withId(R.id.main),
+                                withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        textView.check(matches(withText("Noodle Free Eggplant and Spinach Lasagna")));
+        editText.check(matches(withText("noodle")));
     }
 
     private static Matcher<View> childAtPosition(
