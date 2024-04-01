@@ -13,7 +13,9 @@ import java.util.List;
 public interface RecipeDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertRecipe(Recipe recipe);
+    static void insertRecipe(Recipe recipe) {
+
+    }
 
     @Delete
     void deleteRecipe(Recipe recipe);

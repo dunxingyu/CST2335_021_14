@@ -1,13 +1,16 @@
 package Zhihao;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,6 +34,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import chaowu.DeezerActivity;
 
@@ -59,7 +64,7 @@ public class RecipeSearchActivity extends AppCompatActivity {
         // Initialize toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(R.string.app_name);
 
@@ -85,7 +90,36 @@ public class RecipeSearchActivity extends AppCompatActivity {
                 Toast.makeText(RecipeSearchActivity.this, R.string.enter_search_term, Toast.LENGTH_SHORT).show();
             }
         });
+        // Now setup the BottomNavigationView
+        setupBottomNavigationView(); // Add this line
     }
+    class MyRowHolder extends RecyclerView.ViewHolder{
+        TextView rowitem;
+
+        public MyRowHolder(@NonNull View itemView){
+            super(itemView);
+            itemView.setOnClickListener(clk ->{
+                int position = getAbsoluteAdapterPosition();
+                Executor thread = Executors.newSingleThreadExecutor();
+                AlertDialog.Builder builder = new AlertDialog.Builder( RecipeSearchActivity.this );
+                builder.setMessage("Do you want to add '"+ rowitem.getText().toString()+"' to your Favorite List?")
+                        .setTitle("Question")
+                        .setNegativeButton("no",(dialog, cl)->{}).
+                        setPositiveButton("yes",(dialog, cl)->{
+                            thread.execute(() ->
+                            {
+                                RecipeDao.insertRecipe(recipeList.get(position));
+                            });
+                            RecipeAdapter.notifyItemInserted(recipeList.size()-1);
+
+                        }).create().show();
+            });
+            rowitem = itemView.findViewById(R.id.rowitem);
+
+        }
+    }
+
+
     protected void setupBottomNavigationView() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.second_id);
@@ -120,8 +154,8 @@ public class RecipeSearchActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.help) {
             androidx.appcompat.app.AlertDialog.Builder builder1 = new androidx.appcompat.app.AlertDialog.Builder(RecipeSearchActivity.this);
-            builder1.setMessage(getString(R.string.dictionary_information));
-            builder1.setTitle(getString(R.string.dictionary_info_title));
+            builder1.setMessage(getString(R.string.recipe_search_information));
+            builder1.setTitle(getString(R.string.recipe_search_info_title));
 
             builder1.create().show();
         } else if (id == R.id.home) {

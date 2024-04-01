@@ -75,7 +75,7 @@
     <string name="error_occurred">An error occurred. Please try again.</string>
     <string name="recipe_deleted">Recipe "%1$s" deleted</string>
     <string name="help_info">Help information not available.</string>
-    <string name="recipe_search_information">the.</string>
+    <string name="recipe_search_information">This app allows users to search for recipes by entering a keyword. Users can view detailed information about each recipe, including images, summaries, and source URLs. There is also functionality to save favorite recipes to a database for easy access later. The search history is preserved, so users can quickly find previously searched terms and their results.</string>
     <string name="recipe_search_info_title">Recipe_Search_API_Instruction</string>
 
 
