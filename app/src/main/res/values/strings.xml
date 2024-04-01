@@ -69,7 +69,7 @@
     <!--Recipe Search value strings-->
     <string name="search_hint">Enter a recipe name...</string>
     <string name="search_button">Search</string>
-    <string name="favorite_recipes">add to favorite lists</string>
+    <string name="favorite_recipes">favorite list</string>
     <string name="enter_search_term">Please enter a search term.</string>
     <string name="error_fetch_data">Error fetching data. Please try again later.</string>
     <string name="error_occurred">An error occurred. Please try again.</string>

@@ -51,6 +51,8 @@ public class RecipeSearchActivity extends AppCompatActivity {
     private Toolbar toolbar;
     protected BottomNavigationView bottomNavigationView;
 
+    private Button favoriteRecipes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,8 +91,17 @@ public class RecipeSearchActivity extends AppCompatActivity {
                 Toast.makeText(RecipeSearchActivity.this, R.string.enter_search_term, Toast.LENGTH_SHORT).show();
             }
         });
+
+        favoriteRecipes = findViewById(R.id.favorite_recipes);
+        favoriteRecipes.setOnClickListener(view -> {
+        });
+        favoriteRecipes.setOnClickListener(view -> {
+            startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
+        });
         // Now setup the BottomNavigationView
         setupBottomNavigationView(); // Add this line
+
+
     }
     class MyRowHolder extends RecyclerView.ViewHolder {
         TextView rowitem;
