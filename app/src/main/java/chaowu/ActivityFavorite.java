@@ -1,3 +1,7 @@
+/**
+ * The ActivityFavorite class represents the activity where users can view their favorite songs.
+ * Users can see a list of their favorite songs, and they can also delete songs from the list.
+ */
 package chaowu;
 
 import android.content.Intent;
