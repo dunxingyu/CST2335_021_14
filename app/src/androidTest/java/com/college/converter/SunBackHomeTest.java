@@ -36,7 +36,7 @@ public class SunBackHomeTest {
             new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void sunBackHomeTest() {
+    public void sunlBackHomeTest() {
         ViewInteraction bottomNavigationItemView = onView(
                 allOf(withId(R.id.first_id), withContentDescription("Sunrise/Sunset"),
                         childAtPosition(
@@ -58,11 +58,11 @@ public class SunBackHomeTest {
         actionMenuItemView.perform(click());
 
         ViewInteraction textView = onView(
-                allOf(withId(R.id.textView2), withText("main_activity"),
+                allOf(withId(R.id.textView2), withText("Welcome"),
                         withParent(allOf(withId(R.id.container),
                                 withParent(withId(android.R.id.content)))),
                         isDisplayed()));
-        textView.check(matches(withText("main_activity")));
+        textView.check(matches(withText("Welcome")));
     }
 
     private static Matcher<View> childAtPosition(
