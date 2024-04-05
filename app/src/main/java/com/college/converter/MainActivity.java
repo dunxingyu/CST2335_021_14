@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         // Perform item selected listener
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
+
             int item_id = item.getItemId();
             if (item_id == R.id.home_id) {
                 return true;

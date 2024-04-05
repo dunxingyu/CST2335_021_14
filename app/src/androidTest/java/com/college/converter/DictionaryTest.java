@@ -154,7 +154,6 @@ public class DictionaryTest {
     @Test
     public void dictionaryBackHomeTest() {
 
-
         ViewInteraction actionMenuItemView = onView(
                 allOf(withId(R.id.home), withContentDescription("Home"),
                         childAtPosition(
