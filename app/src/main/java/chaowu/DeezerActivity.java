@@ -1,3 +1,7 @@
+/**
+ * The DeezerActivity class represents the main activity of the Deezer application,
+ * allowing users to search for artists and view their top tracks.
+ */
 package chaowu;
 
 import static android.content.ContentValues.TAG;
@@ -47,6 +51,9 @@ import java.util.concurrent.Executors;
 import Zhihao.RecipeSearchActivity;
 import data.SongViewModel;
 
+/**
+ * Represents the main activity of the Deezer application.
+ */
 public class DeezerActivity extends AppCompatActivity {
 
     ActivityDeezerBinding binding;
@@ -60,7 +67,11 @@ public class DeezerActivity extends AppCompatActivity {
     protected RequestQueue queue;
     private static final String PREFS_NAME = "MyPrefs";
     private static final String SEARCH_TERM_KEY = "searchTerm";
-
+    /**
+     * Initializes the activity when created.
+     *
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -174,11 +185,19 @@ public class DeezerActivity extends AppCompatActivity {
             return false;
         });
     }
+    /**
+     * Represents a row holder for the RecyclerView.
+     */
     class MyRowHolder extends RecyclerView.ViewHolder{
         TextView rowitem;
 
 
 
+        /**
+         * Constructs a new MyRowHolder with the given itemView.
+         *
+         * @param itemView The view for the row.
+         */
         public MyRowHolder(@NonNull View itemView){
             super(itemView);
             itemView.setOnClickListener(clk ->{
@@ -203,11 +222,23 @@ public class DeezerActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Inflates the options menu.
+     *
+     * @param menu The menu to inflate.
+     * @return true if the menu is inflated successfully, false otherwise.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
+    /**
+     * Handles options menu item selection.
+     *
+     * @param item The selected menu item.
+     * @return true if the menu item is handled successfully, false otherwise.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -225,6 +256,13 @@ public class DeezerActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    /**
+     * Fetches the list of songs based on the provided key (search term).
+     * This method sends a request to the Deezer API to search for artists matching the key,
+     * retrieves the tracklist URL of the first artist found, and then fetches the tracklist.
+     *
+     * @param key The search term to look for artists.
+     */
     public void fetchSong(String key){
         songtest = new ArrayList<>();
         songs = new ArrayList<>();
@@ -267,6 +305,14 @@ public class DeezerActivity extends AppCompatActivity {
         queue.add(jsonObjectRequest);
 
     }
+    /**
+     * Fetches the tracklist of an artist from the provided tracklist URL.
+     * This method sends a request to the Deezer API to retrieve the tracklist of an artist
+     * based on the provided tracklist URL. It then processes the tracklist and populates
+     * the songs list and adapter for displaying in the RecyclerView.
+     *
+     * @param tracklistUrl The URL of the tracklist for the artist.
+     */
     private void fetchTracklist(String tracklistUrl) {
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);

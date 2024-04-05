@@ -1,3 +1,7 @@
+/**
+ * The DetailSong class represents the activity where details of a selected song are displayed.
+ * Users can view the title, duration, album, and cover image of the selected song.
+ */
 package chaowu;
 
 import android.content.Intent;
@@ -18,10 +22,16 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import Zhihao.RecipeSearchActivity;
-
+/**
+ * Represents the activity where details of a selected song are displayed.
+ */
 public class DetailSong extends AppCompatActivity {
     ActivityDetailSongBinding binding;
-
+    /**
+     * Initializes the activity when created.
+     *
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,11 +79,23 @@ public class DetailSong extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inflates the options menu.
+     *
+     * @param menu The menu to inflate.
+     * @return true if the menu is inflated successfully, false otherwise.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
+    /**
+     * Handles options menu item selection.
+     *
+     * @param item The selected menu item.
+     * @return true if the menu item is handled successfully, false otherwise.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 

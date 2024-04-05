@@ -1,3 +1,7 @@
+/**
+ * The ActivityFavorite class represents the activity where users can view their favorite songs.
+ * Users can see a list of their favorite songs, and they can also delete songs from the list.
+ */
 package chaowu;
 
 import android.content.Intent;
@@ -33,7 +37,9 @@ import java.util.concurrent.Executors;
 
 import Zhihao.RecipeSearchActivity;
 import data.SongViewModel;
-
+/**
+ * Represents the activity where users can view their favorite songs and perform actions on them.
+ */
 public class ActivityFavorite extends AppCompatActivity {
 
     ActivityFavoriteBinding binding;
@@ -46,6 +52,11 @@ public class ActivityFavorite extends AppCompatActivity {
     SongDAO sDAO;
     protected RequestQueue queue;
 
+    /**
+     * Initializes the activity when created.
+     *
+     * @param savedInstanceState The saved instance state bundle.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,11 +147,23 @@ public class ActivityFavorite extends AppCompatActivity {
         });
     }
 
+    /**
+     * Inflates the options menu.
+     *
+     * @param menu The menu to inflate.
+     * @return true if the menu is inflated successfully, false otherwise.
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return true;
     }
+    /**
+     * Handles options menu item selection.
+     *
+     * @param item The selected menu item.
+     * @return true if the menu item is handled successfully, false otherwise.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -158,12 +181,19 @@ public class ActivityFavorite extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    /**
+     * Represents a row holder for the RecyclerView.
+     */
     class MyRowHolder extends RecyclerView.ViewHolder{
         TextView rowitem2;
         Button button;
 
 
-
+        /**
+         * Constructs a new MyRowHolder with the given itemView.
+         *
+         * @param itemView The view for the row.
+         */
         public MyRowHolder(@NonNull View itemView){
             super(itemView);
             itemView.setOnClickListener(clk ->{
